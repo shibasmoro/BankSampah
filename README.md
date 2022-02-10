@@ -1,1 +1,1 @@
-Development branches use for adding some feature
+Development branches used for adding some feature
