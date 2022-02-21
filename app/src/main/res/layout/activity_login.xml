@@ -108,7 +108,8 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/shapebutton"
         android:text="LOGIN"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:onClick="login"/>
 
     <TextView
         android:id="@+id/register"
