@@ -14,93 +14,99 @@
         android:src="@drawable/loginpage2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/textlayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        android:layout_below="@+id/imagelogin"
-        android:hint="Username"
-        app:startIconDrawable="@drawable/outline_perm_identity_24"
-        app:startIconTint="@color/buttontext"
-        android:textColorHint="@color/buttontext"
-        app:hintTextColor="@color/buttontext"
-        app:boxStrokeColor="@color/buttontext"
-        app:endIconMode="clear_text"
-        app:endIconDrawable="@drawable/outline_lock_24"
-        app:endIconTint="@color/buttontext"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="40dp">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edittext"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textlayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@+id/imagelogin"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:hint="Username"
+        android:textColorHint="@color/buttontext"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/buttontext"
+        app:endIconDrawable="@drawable/outline_lock_24"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/buttontext"
+        app:hintTextColor="@color/buttontext"
+        app:startIconDrawable="@drawable/outline_perm_identity_24"
+        app:startIconTint="@color/buttontext">
+
+        <EditText
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
-            android:textColor="@color/buttontext">
+            android:textColor="@color/buttontext"
+            tools:ignore="SpeakableTextPresentCheck">
 
-        </com.google.android.material.textfield.TextInputEditText>
+        </EditText>
 
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:id="@+id/textlayoutpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxCornerRadiusBottomEnd="10dp"
-        app:boxCornerRadiusBottomStart="10dp"
-        app:boxCornerRadiusTopEnd="10dp"
-        app:boxCornerRadiusTopStart="10dp"
-        android:layout_below="@+id/textlayout"
-        android:hint="Password"
-        app:startIconDrawable="@drawable/outline_lock_24"
-        app:startIconTint="@color/buttontext"
-        android:textColorHint="@color/buttontext"
-        app:hintTextColor="@color/buttontext"
-        app:boxStrokeColor="@color/buttontext"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="10dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edittextpassword"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textlayoutpassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@+id/textlayout"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:hint="Password"
+        android:textColorHint="@color/buttontext"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/buttontext"
+        app:hintTextColor="@color/buttontext"
+        app:startIconDrawable="@drawable/outline_lock_24"
+        app:startIconTint="@color/buttontext">
+
+        <EditText
+            android:autofillHints="password"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
             android:inputType="textPassword"
-            android:textColor="@color/buttontext">
+            android:textColor="@color/buttontext"
+            tools:ignore="SpeakableTextPresentCheck">
 
-        </com.google.android.material.textfield.TextInputEditText>
+        </EditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textlayoutpassword"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="50dp"
-        android:textSize="15sp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/forgot"
         android:textColor="@color/buttontext"
-        android:text="Forgot Password">
-
-    </TextView>
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/btnlogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/textlayoutpassword"
         android:layout_centerInParent="true"
         android:layout_marginStart="80dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/shapebutton"
         android:text="LOGIN"
         android:textColor="@color/white" />
 
@@ -109,14 +115,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnlogin"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/poppins_light"
         android:gravity="center"
         android:minHeight="48dp"
         android:onClick="login"
-        android:text="Don't have an account ? Sign Up"
+        android:text="Doesn't has any account ? Register Here"
         android:textColor="#00838F" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="@string/loginpage"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/buttontext"
+        android:textSize="10sp" />
 
 
 </RelativeLayout>

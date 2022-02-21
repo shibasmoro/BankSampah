@@ -3,9 +3,11 @@
     <string name="heading_one">Pungut</string>
     <string name="heading_two">Setor</string>
     <string name="heading_three">Timbang</string>
+    <string name="forgot">Forgot Password</string>
     <string name="heading_fourth">Tarik Saldo</string>
     <string name="desc_one">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="loginpage">Use the application according to policy rules. Any kinds of violoations will be subject to sanctions.</string>
 </resources>

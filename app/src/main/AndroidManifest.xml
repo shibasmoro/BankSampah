@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.userbanksampah">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -11,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Userbanksampah">
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
         <activity
             android:name=".splashscreen"
             android:exported="true">
@@ -32,6 +37,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

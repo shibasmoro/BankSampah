@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+
+
+    <ImageView
+        android:id="@+id/bghome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/home">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/greetings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Hi, Welcome Back !"
+        android:textColor="@color/buttontext"
+        android:textSize="20sp"></TextView>
+
+    <TextView
+        android:id="@+id/nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/greetings"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Phaksi Bangun Asmoro "
+        android:textColor="@color/buttontext"
+        android:textSize="15sp"></TextView>
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nama"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="085770539399"
+        android:textColor="@color/buttontext"
+        android:textSize="10sp"></TextView>
+
+    <RelativeLayout
+        android:id="@+id/cardpiu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/number"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="50dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:backgroundTint="#388a8d"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/virus"></ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/wear_mask"></ImageView>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="@color/buttontext"
+            app:cardCornerRadius="20dp">
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Your Balance"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/saldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Rp. 2.700.000"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="20sp">
+
+            </TextView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bghome"
+        android:layout_below="@id/cardpiu"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="55dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/can"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="KALENG">
+
+                </TextView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="55dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/styrofoam"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="STYROFOAM">
+
+                </TextView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="55dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/beam"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="BESI">
+
+                </TextView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginTop="55dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/oil"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_light"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="MINYAK">
+
+                </TextView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
