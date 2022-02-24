@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.userbanksampah.Model.ParamLogin;
 import com.example.userbanksampah.Retrofit.RetrofitImpl;
 
 import retrofit2.Call;
@@ -37,10 +36,10 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 String param = response.body();
                 if (response.isSuccessful()){
-                    if (param.equals("sukses")){
+                    if (param.equals("Sukses")){
                         startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                     }else{
-                        Toast.makeText(getApplicationContext(),"Gagal Login",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Password atau Username Salah",Toast.LENGTH_LONG).show();
                     }
                 }
             }
