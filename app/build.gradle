@@ -4,6 +4,9 @@ plugins {
 
 android {
     compileSdk 32
+    buildFeatures {
+        viewBinding =  true
+    }
 
     defaultConfig {
         applicationId "com.example.userbanksampah"
@@ -41,5 +44,5 @@ dependencies {
     // ini merupakan dependecies yang di perlukan jika ingin menggunakan retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
 }

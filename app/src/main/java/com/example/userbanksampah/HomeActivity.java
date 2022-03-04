@@ -9,36 +9,37 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.userbanksampah.Retrofit.RetrofitImpl;
+import com.example.userbanksampah.databinding.ActivityHomeBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView nama_nasabah,number,Saldo;
+
     SharedPreferences preferences;
+
+    private ActivityHomeBinding Binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        Binding =ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(Binding.getRoot());
         init();
 
     }
 
     public void init(){
         preferences =getSharedPreferences(LoginActivity.MyPreferences, Context.MODE_PRIVATE);
-        nama_nasabah = findViewById(R.id.nama);
-        number = findViewById(R.id.number);
-        Saldo = findViewById(R.id.saldo);
-        nama_nasabah.setText(preferences.getString(LoginActivity.Nama,"kosong"));
-        number.setText(preferences.getString(LoginActivity.Alamat,"Kosong"));
+        Binding.nama.setText(preferences.getString(LoginActivity.Nama,"Kosong"));
+        Binding.number.setText(preferences.getString(LoginActivity.Alamat,"Kosong"));
 
         RetrofitImpl.show_saldo().your_saldo(preferences.getString(LoginActivity.Id,"kosong")).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()){
 
-                    Saldo.setText(response.body().toString());
+                    Binding.saldo.setText("Rp. "+response.body().toString());
                 }
             }
 

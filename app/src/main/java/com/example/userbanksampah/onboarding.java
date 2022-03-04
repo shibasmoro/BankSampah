@@ -15,20 +15,22 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.userbanksampah.databinding.ActivityOnboardingBinding;
+
 public class onboarding extends AppCompatActivity {
     ViewPager mSlideViewPager;
-    LinearLayout mDotlayout;
-    Button skip;
     TextView[] dots;
     ViewPageAdapter viewPageAdapter;
+    private ActivityOnboardingBinding Binding;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding);
-        skip = findViewById(R.id.skipbutton);
-        skip.setOnClickListener(new View.OnClickListener() {
+        Binding = ActivityOnboardingBinding.inflate(getLayoutInflater());
+        setContentView(Binding.getRoot());
+
+        Binding.skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(onboarding.this,LoginActivity.class);
@@ -37,8 +39,7 @@ public class onboarding extends AppCompatActivity {
 
             }
         });
-        mSlideViewPager = (ViewPager) findViewById(R.id.slideViewPager);
-        mDotlayout = (LinearLayout) findViewById(R.id.indicatorlayout);
+        mSlideViewPager = Binding.slideViewPager;
         viewPageAdapter = new ViewPageAdapter(this);
         mSlideViewPager.setAdapter(viewPageAdapter);
         setUpindicator(0);
@@ -48,13 +49,13 @@ public class onboarding extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setUpindicator(int position){
         dots = new TextView[4];
-        mDotlayout.removeAllViews();
+        Binding.indicatorlayout.removeAllViews();
         for (int i = 0; i<dots.length;i++){
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226"));
             dots[i].setTextSize(35);
             dots[i].setTextColor(getResources().getColor(R.color.inactive,getApplicationContext().getTheme()));
-            mDotlayout.addView(dots[i]);
+            Binding.indicatorlayout.addView(dots[i]);
         }
         dots[position].setTextColor(getResources().getColor(R.color.active,getApplicationContext().getTheme()));
     }
