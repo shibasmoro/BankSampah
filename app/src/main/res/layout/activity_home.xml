@@ -8,17 +8,19 @@
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-
-
-    <ImageView
-        android:id="@+id/bghome"
+    <Button
+        android:onClick="logout"
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"
+        android:layout_below="@+id/llhome"
         android:layout_centerInParent="true"
-        android:src="@drawable/home">
+        android:layout_marginEnd="10dp"
+        android:text="@string/logout"
+        android:textColor="@color/white">
 
-    </ImageView>
+    </Button>
+
 
     <TextView
         android:id="@+id/greetings"
@@ -32,7 +34,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Hi, Welcome Back !"
         android:textColor="@color/buttontext"
-        android:textSize="20sp"></TextView>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/nama"
@@ -44,7 +46,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="Phaksi Bangun Asmoro "
         android:textColor="@color/buttontext"
-        android:textSize="15sp"></TextView>
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/number"
@@ -56,7 +58,7 @@
         android:fontFamily="@font/poppins_semibold"
         android:text="085770539399"
         android:textColor="@color/buttontext"
-        android:textSize="10sp"></TextView>
+        android:textSize="10sp" />
 
     <RelativeLayout
         android:id="@+id/cardpiu"
@@ -76,14 +78,14 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/virus"></ImageView>
+                android:src="@drawable/virus" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/wear_mask"></ImageView>
+                android:src="@drawable/wear_mask" />
 
 
         </com.google.android.material.card.MaterialCardView>
@@ -116,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Rp. 2.700.000"
+                android:text="Rp.0"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="20sp">
@@ -128,6 +130,77 @@
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llhome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardpiu"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:backgroundTint="@color/white">
+
+
+            <ImageView
+                android:id="@+id/verify"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/home1"></ImageView>
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="115dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/verify"
+                android:textColor="@color/buttontext"></TextView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="30dp"
+            android:backgroundTint="@color/white">
+
+
+            <ImageView
+                android:id="@+id/history"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/home2"></ImageView>
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/History"
+                android:textColor="@color/buttontext"></TextView>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/homepage"></ImageView>
+
+    </LinearLayout>
 
 
 

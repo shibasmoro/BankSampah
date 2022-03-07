@@ -4,6 +4,9 @@
     <string name="heading_two">Setor</string>
     <string name="heading_three">Timbang</string>
     <string name="forgot">Forgot Password</string>
+    <string name="History">Riwayat </string>
+    <string name="logout">Keluar </string>
+    <string name="verify">Verifikasi Penarikan</string>
     <string name="heading_fourth">Tarik Saldo</string>
     <string name="desc_one">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>

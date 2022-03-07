@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Userbanksampah">
         <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Retrofit.VerifyActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
