@@ -12,42 +12,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.userbanksampah.Retrofit.RetrofitImpl;
 import com.example.userbanksampah.Retrofit.VerifyActivity;
+import com.example.userbanksampah.databinding.ActivityHomeBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView nama_nasabah,number,Saldo;
-    private ImageView verify,history;
+
+    private ActivityHomeBinding Binding;
     SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        Binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(Binding.getRoot());
 
         init();
-        verify.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, VerifyActivity.class)));
-        history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
+        Binding.verify.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, VerifyActivity.class)));
+        Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
     }
 
     public void init(){
         preferences =getSharedPreferences(LoginActivity.MyPreferences, Context.MODE_PRIVATE);
-        verify = findViewById(R.id.verify);
-        history = findViewById(R.id.history);
-        nama_nasabah = findViewById(R.id.nama);
-        number = findViewById(R.id.number);
-        Saldo = findViewById(R.id.saldo);
-        nama_nasabah.setText(preferences.getString(LoginActivity.Nama,"kosong"));
-        number.setText(preferences.getString(LoginActivity.Alamat,"Kosong"));
+        Binding.nama.setText(preferences.getString(LoginActivity.Nama,"kosong"));
+        Binding.number.setText(preferences.getString(LoginActivity.Alamat,"Kosong"));
 
         RetrofitImpl.show_saldo().your_saldo(preferences.getString(LoginActivity.Id,"kosong")).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()){
 
-                    Saldo.setText(response.body().toString());
+                    Binding.saldo.setText(response.body().toString());
                 }
             }
 
@@ -58,6 +55,11 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
     public void logout(View view) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(LoginActivity.Id,"Kosong");
+        editor.putString(LoginActivity.Nama,"Kosong");
+        editor.putString(LoginActivity.Alamat,"Kosong");
+        editor.commit();
         startActivity(new Intent(HomeActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();

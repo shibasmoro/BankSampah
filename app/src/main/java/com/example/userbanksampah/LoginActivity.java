@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.userbanksampah.Model.Nasabah;
 import com.example.userbanksampah.Retrofit.RetrofitImpl;
+import com.example.userbanksampah.databinding.ActivityLoginBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,30 +21,34 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static  final String MyPreferences   ="Mypref";    // tempat menyimpan data lokal
+    public static  final String MyPreferences  ="Mypref";    // tempat menyimpan data lokal
     SharedPreferences preferences;
+
+    private ActivityLoginBinding binding;
+
     public static final String Id ="id";
     public static final String Nama ="nama";
     public static final String Alamat ="alamat";
-    EditText username, password;
-    TextView textView;
+    public static final String Kode ="kode";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        textView = findViewById(R.id.register);
-        textView.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+        binding =ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
+        binding.register.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
 
         preferences =getSharedPreferences(MyPreferences, Context.MODE_PRIVATE);
     }
 
     public void login(View view) {
-         if ( !is_empty(username,password)){
+         if ( !is_empty(binding.username,binding.password)){
 
-        RetrofitImpl.loginrequest().validate_login(username.getText().toString(),password.getText().toString()).enqueue(new Callback<Nasabah>() {
+        RetrofitImpl.loginrequest().validate_login(binding.username.getText().toString(),binding.password.getText().toString()).enqueue(new Callback<Nasabah>() {
             @Override
             public void onResponse(Call<Nasabah> call, Response<Nasabah> response) {
 
@@ -53,16 +58,16 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),data_nasabah.getNama(),Toast.LENGTH_LONG).show();
 
                     if (data_nasabah.getNama().equals("eror")){
-                        Toast.makeText(getApplicationContext(),"Gagal Login",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Username dan Password Tidak Sesuai",Toast.LENGTH_LONG).show();
                     }else if (!data_nasabah.getNama().equals("eror")){
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString(Id,response.body().getId_nasabah());
                         editor.putString(Nama,response.body().getNama());
                         editor.putString(Alamat,response.body().getAlamat());
+                        editor.putInt(Kode,1);
                         editor.commit();
-                        startActivity(new Intent(LoginActivity.this,HomeActivity.class));
-                        Toast.makeText(getApplicationContext(),"BERHASIL",Toast.LENGTH_LONG).show();
-
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
 
                     }
 
@@ -75,18 +80,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-         }else{
-             Toast.makeText(getApplicationContext(),"username dan password tidak boleh kosong",Toast.LENGTH_LONG).show();
          }
 
     }
 
     public boolean is_empty(TextView data1,TextView data2){
         boolean param = false;
-        if (data1.getText().toString().isEmpty() || data2.getText().toString().isEmpty()){
+        if (data1.getText().toString().isEmpty()){
+            data1.setError("Harap Masukan Username");
             param = true;
 
         }
+        if (data2.getText().toString().isEmpty()){
+            data1.setError("Harap Masukan Password");
+            param = true;
+
+        }
+
         return param;
     }
 

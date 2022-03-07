@@ -16,19 +16,28 @@ public class splashscreen extends AppCompatActivity {
 
     SharedPreferences preferences;
     private  String id;
+    private int data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
         preferences =getSharedPreferences(LoginActivity.MyPreferences, Context.MODE_PRIVATE);
-        id  = preferences.getString(LoginActivity.Id,"Kosong");
+        id   = preferences.getString(LoginActivity.Id,"Kosong");
+        data = preferences.getInt("kode",0);
         if (!id.equals("Kosong")){
             Intent data = new Intent(splashscreen.this ,HomeActivity.class);
             data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(data);
-        }else{
+        }
+        else if (data == 1){
+            Intent data = new Intent(splashscreen.this ,LoginActivity.class);
+            data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(data);
+        }
+        else{
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
