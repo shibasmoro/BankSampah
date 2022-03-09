@@ -15,4 +15,6 @@ public interface RetrofitConfig {
 
     @GET("get_saldo.php")
     Call<Integer> your_saldo(@Query("id_nasabah") String id);
+
+    // ini perubahan yang ada pada fitur
 }
