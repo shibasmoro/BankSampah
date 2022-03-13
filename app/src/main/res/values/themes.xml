@@ -5,8 +5,7 @@
         <item name="colorPrimary">@color/buttontext</item>
         <item name="colorPrimaryVariant">@color/buttontext</item>
         <item name="colorOnPrimary">@color/buttontext</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>

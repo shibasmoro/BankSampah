@@ -1,208 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".HomeActivity">
 
-    <Button
-        android:onClick="logout"
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_below="@+id/llhome"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="10dp"
-        android:text="@string/logout"
-        android:textColor="@color/white">
-
-    </Button>
-
-
-    <TextView
-        android:id="@+id/greetings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Hi, Welcome Back !"
-        android:textColor="@color/buttontext"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/greetings"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Phaksi Bangun Asmoro "
-        android:textColor="@color/buttontext"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/nama"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="085770539399"
-        android:textColor="@color/buttontext"
-        android:textSize="10sp" />
-
-    <RelativeLayout
-        android:id="@+id/cardpiu"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/number"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="50dp">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:backgroundTint="#388a8d"
-            app:cardCornerRadius="15dp">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/virus" />
+        <TextView
+            android:id="@+id/nama"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/name"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/wear_mask" />
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="75dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/angka"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="40dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/profile"/>
 
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="20dp"
-            app:cardBackgroundColor="@color/buttontext"
-            app:cardCornerRadius="20dp">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/card_view"
+            android:orientation="vertical"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number">
 
             <TextView
-                android:id="@+id/balance"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="35dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Tabungan Anda"
-                android:textAlignment="center"
+                android:text="@string/saldo"
                 android:textColor="@color/white"
-                android:textSize="10sp">
+                android:textSize="18sp">
 
             </TextView>
 
             <TextView
                 android:id="@+id/saldo"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Rp.0"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="20sp">
+                android:text="@string/uang"
+                android:textColor="@color/white"
+                android:textSize="18sp"></TextView>
+        </LinearLayout>
 
-            </TextView>
+        <LinearLayout
+            android:id="@+id/cardview1"
+            android:layout_width="330dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="155dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@color/white"
+
+                android:elevation="2dp"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/verify"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/history"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="23dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/History"
+                        android:textColor="@color/buttontext"></TextView>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="155dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:elevation="30dp"
+                app:cardCornerRadius="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/history"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/verif"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="23dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/verify"
+                        android:textColor="@color/buttontext"></TextView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/llhome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardpiu"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:backgroundTint="@color/white">
-
-
-            <ImageView
-                android:id="@+id/verify"
-                android:layout_width="100dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/home1"></ImageView>
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="115dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/verify"
-                android:textColor="@color/buttontext"></TextView>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="30dp"
-            android:backgroundTint="@color/white">
-
-
-            <ImageView
-                android:id="@+id/history"
-                android:layout_width="100dp"
-                android:layout_height="130dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/home2"></ImageView>
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/History"
-                android:textColor="@color/buttontext"></TextView>
-        </androidx.cardview.widget.CardView>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_below="@id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/homepage"></ImageView>
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview1"></androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_1"></androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-
-</RelativeLayout>
+</ScrollView>
