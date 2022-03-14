@@ -5,6 +5,7 @@ plugins {
 android {
     compileSdk 32
     buildFeatures {
+
         viewBinding =  true
     }
 
@@ -43,8 +44,13 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // ini merupakan dependecies yang di perlukan jika ingin menggunakan retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+    // ini merupakan implementasi view model dan live data
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.3.1"
 }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.StaticRVViewHolder> {
+
     private ArrayList<StaticRvModel> items;
     int row = -1;
     UpdateRecyclerView updateRecyclerView;
@@ -35,7 +36,7 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
         return staticRVViewHolder;
     }
 
-    @Override
+
     public void onBindViewHolder(@NonNull StaticRVViewHolder holder, final int position) {
         StaticRvModel currentItem = items.get(position);
         holder.imageView.setImageResource(currentItem.getImage());

@@ -12,9 +12,9 @@ public class RetrofitImpl {
 
     public static RetrofitConfig loginrequest(){
          retrofit = new Retrofit.Builder()
-                .baseUrl(Base_url)
+                 .baseUrl(Base_url)
                  .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                 .build();
 
          return  retrofit.create(RetrofitConfig.class);
 
