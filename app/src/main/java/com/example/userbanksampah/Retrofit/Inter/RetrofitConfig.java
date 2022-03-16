@@ -1,10 +1,9 @@
 package com.example.userbanksampah.Retrofit.Inter;
 
 import com.example.userbanksampah.Model.Nasabah;
-import com.example.userbanksampah.Model.ParamLogin;
+import com.example.userbanksampah.Model.Pengajuan;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -15,6 +14,10 @@ public interface RetrofitConfig {
 
     @GET("get_saldo.php")
     Call<Integer> your_saldo(@Query("id_nasabah") String id);
+
+
+    @GET("get_minimum.php")
+    Call<Pengajuan> your_minimum(@Query("id_nasabah")String id);
 
     // ini perubahan yang ada pada fitur
 }

@@ -1,16 +1,15 @@
 package com.example.userbanksampah;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
-import android.view.WindowManager;
+
+import com.example.userbanksampah.Activty.HomeActivity;
+import com.example.userbanksampah.Activty.LoginActivity;
 
 public class splashscreen extends AppCompatActivity {
 
@@ -26,7 +25,7 @@ public class splashscreen extends AppCompatActivity {
         id   = preferences.getString(LoginActivity.Id,"Kosong");
         data = preferences.getInt("kode",0);
         if (!id.equals("Kosong")){
-            Intent data = new Intent(splashscreen.this ,HomeActivity.class);
+            Intent data = new Intent(splashscreen.this , HomeActivity.class);
             data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(data);

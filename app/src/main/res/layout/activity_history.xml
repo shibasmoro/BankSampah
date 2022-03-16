@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/active"
     android:backgroundTint="@color/white"
-    tools:context=".HistoryActivity">
+    tools:context=".Activty.HistoryActivity">
 
     <Spinner
         android:id="@+id/spinner_year"

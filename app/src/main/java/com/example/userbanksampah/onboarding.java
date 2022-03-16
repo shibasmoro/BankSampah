@@ -9,12 +9,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.userbanksampah.Activty.LoginActivity;
 import com.example.userbanksampah.databinding.ActivityOnboardingBinding;
 
 public class onboarding extends AppCompatActivity {
@@ -33,7 +30,7 @@ public class onboarding extends AppCompatActivity {
         Binding.skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(onboarding.this,LoginActivity.class);
+                Intent i = new Intent(onboarding.this, LoginActivity.class);
                 startActivity(i);
                 finish();
 
