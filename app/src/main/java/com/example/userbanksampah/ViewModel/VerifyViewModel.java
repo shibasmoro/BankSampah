@@ -19,18 +19,14 @@ public class VerifyViewModel extends ViewModel {
     private Pengajuan pengajuan = new Pengajuan();
 
     private MutableLiveData<Integer> minimal = new MutableLiveData<>();
-    public LiveData<Integer> _minimal = minimal;
-
-
-
-
+    public  LiveData<Integer> _minimal = minimal;
 
     public void getMaxTransaction(String id){
        RetrofitImpl.loginrequest().your_minimum(id).enqueue(new Callback<Pengajuan>() {
            @Override
            public void onResponse(Call<Pengajuan> call, Response<Pengajuan> response) {
                pengajuan = response.body();
-               minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
+               minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100)-5000);
            }
 
            @Override

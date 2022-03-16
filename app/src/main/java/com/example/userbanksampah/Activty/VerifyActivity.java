@@ -15,6 +15,7 @@ import com.example.userbanksampah.R;
 import com.example.userbanksampah.ViewModel.LoginViewModel;
 import com.example.userbanksampah.ViewModel.VerifyViewModel;
 import com.example.userbanksampah.databinding.ActivityVerifyBinding;
+import com.example.userbanksampah.util.PreferencesApp;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -24,7 +25,7 @@ import java.util.Formatter;
 import java.util.List;
 
 public class VerifyActivity extends AppCompatActivity {
-    private  SharedPreferences preferences;
+
     private VerifyViewModel model;
     private String id_param;
 
@@ -35,26 +36,24 @@ public class VerifyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        preferences =getSharedPreferences(LoginActivity.MyPreferences, Context.MODE_PRIVATE);
-        id_param =preferences.getString(LoginActivity.Id,"kosong");
 
+        PreferencesApp pref = new PreferencesApp(this);
+        id_param = PreferencesApp.getStr(PreferencesApp.Id);
         model = new ViewModelProvider(this).get(VerifyViewModel.class);
-        model.getMaxTransaction("321");
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        model.getMaxTransaction(id_param);
 
-        //imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
         model.getMaxTransaction();
-        model._minimal.observe(this,data->{
+        model._minimal.observe(this, data -> {
 
-            if (data<=5000){
+            if (data <= 5000) {
                 binding.verifikasi.setEnabled(false);
                 binding.textView.setText("Maaf Saldo Anda Tidak cukup");
-            }else{
+            } else {
                 NumberFormat numberFormat = new DecimalFormat("#,###");
-                binding.textView.setText("Rp."+numberFormat.format(data));
+                binding.textView.setText("Rp." + numberFormat.format(data));
             }
 
-       });
+        });
 
     }
 

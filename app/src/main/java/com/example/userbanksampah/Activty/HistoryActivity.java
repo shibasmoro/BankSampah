@@ -18,8 +18,8 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Binding = ActivityHistoryBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
-        Tahun.setYears(2018);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Tahun.getYears());
+
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Tahun.this_year);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Binding.spinnerYear.setAdapter(adapter);
 

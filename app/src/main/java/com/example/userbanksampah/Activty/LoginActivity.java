@@ -14,40 +14,28 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.userbanksampah.Model.Nasabah;
 import com.example.userbanksampah.ViewModel.LoginViewModel;
 import com.example.userbanksampah.databinding.ActivityLoginBinding;
+import com.example.userbanksampah.util.PreferencesApp;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-    public static  final String MyPreferences  ="Mypref";    // tempat menyimpan data lokal
-    public static final String Id ="id";
-    public static final String Nama ="nama";
-    public static final String Alamat ="alamat";
-    public static final String Kode ="kode";
-
-
-    SharedPreferences preferences;
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding =ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.register.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
 
-        preferences =getSharedPreferences(MyPreferences, Context.MODE_PRIVATE);
-
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        loginViewModel.getNasabah().observe(this,adata->{
-            if (adata.getNama().equals("eror")){
-                Toast.makeText(getApplicationContext(),"Username dan Password Tidak Sesuai",Toast.LENGTH_SHORT).show();
-            }else{
+        loginViewModel.getNasabah().observe(this, adata -> {
+            if (adata.getNama().equals("eror")) {
+                Toast.makeText(getApplicationContext(), "Username dan Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
+            } else {
                 Move_To_Home(adata);
             }
 
@@ -55,33 +43,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-         if ( !is_empty(binding.username,binding.password)){
-             loginViewModel.login(binding.username.getText().toString(),binding.password.getText().toString());
-         }
+        if (!is_empty(binding.username, binding.password)) {
+            loginViewModel.login(binding.username.getText().toString(), binding.password.getText().toString());
+        }
     }
-    public boolean is_empty(TextView data1,TextView data2){
+
+    public boolean is_empty(TextView data1, TextView data2) {
         boolean param = false;
-        if (data1.getText().toString().isEmpty()){
+        if (data1.getText().toString().isEmpty()) {
             data1.setError("Harap Masukan Username");
             param = true;
         }
-        if (data2.getText().toString().isEmpty()){
+        if (data2.getText().toString().isEmpty()) {
             data2.setError("Harap Masukan Password");
             param = true;
         }
         return param;
     }
 
-    public void Move_To_Home(Nasabah nasabah){
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(Id,nasabah.getId_nasabah());
-            editor.putString(Nama,nasabah.getNama());
-            editor.putString(Alamat,nasabah.getAlamat());
-            editor.putInt(Kode,1);
-            editor.commit();
-
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+    public void Move_To_Home(Nasabah nasabah) {
+        PreferencesApp.setStr(PreferencesApp.Id, nasabah.getId_nasabah());
+        PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
+        PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());
+        PreferencesApp.setInt(PreferencesApp.Kode, 1);
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
 }
