@@ -26,7 +26,10 @@ public class VerifyViewModel extends ViewModel {
            @Override
            public void onResponse(Call<Pengajuan> call, Response<Pengajuan> response) {
                pengajuan = response.body();
-               minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100)-5000);
+
+               minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
+
+
            }
 
            @Override

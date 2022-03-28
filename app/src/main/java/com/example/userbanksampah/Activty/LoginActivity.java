@@ -21,9 +21,12 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -62,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void Move_To_Home(Nasabah nasabah) {
+        PreferencesApp data = new PreferencesApp(this);
         PreferencesApp.setStr(PreferencesApp.Id, nasabah.getId_nasabah());
         PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
         PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());

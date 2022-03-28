@@ -4,7 +4,6 @@ package com.example.userbanksampah.Activty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -48,13 +47,14 @@ public class HomeActivity extends AppCompatActivity implements UpdateRecyclerVie
         Binding.nama.setText(PreferencesApp.getStr(PreferencesApp.Nama));
         model.getSaldo(PreferencesApp.getStr(PreferencesApp.Id));
 
+        // medapat saldo saat ini
         model.data.observe(this, data -> {
             NumberFormat formatter = new DecimalFormat("#,###");
             Binding.saldo.setText("Rp." + formatter.format(data));
 
         });
 
-        Binding.verify.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, VerifyActivity.class)));
+        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
         ArrayList<StaticRvModel> item = new ArrayList<>();

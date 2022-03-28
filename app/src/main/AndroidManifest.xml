@@ -17,7 +17,7 @@
             android:name=".Activty.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Activty.VerifyActivity"
+            android:name=".Activty.PengajuanActivity"
             android:exported="false" />
         <activity
             android:name=".Activty.HomeActivity"
