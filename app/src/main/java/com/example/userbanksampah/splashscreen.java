@@ -2,14 +2,12 @@ package com.example.userbanksampah;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.userbanksampah.Activty.HomeActivity;
-import com.example.userbanksampah.Activty.LoginActivity;
+import com.example.userbanksampah.activty.HomeActivity;
+import com.example.userbanksampah.activty.LoginActivity;
 import com.example.userbanksampah.util.PreferencesApp;
 
 public class splashscreen extends AppCompatActivity {
