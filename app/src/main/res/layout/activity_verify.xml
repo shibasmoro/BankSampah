@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="20dp"
-    tools:context=".Activty.PengajuanActivity">
+    tools:context=".activty.PengajuanActivity">
 
     <ImageView
         android:onClick="backbutton"

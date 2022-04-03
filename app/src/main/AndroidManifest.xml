@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Userbanksampah">
         <activity
-            android:name=".Activty.HistoryActivity"
+            android:name=".activty.HistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Activty.PengajuanActivity"
+            android:name=".activty.PengajuanActivity"
             android:exported="false" />
         <activity
-            android:name=".Activty.HomeActivity"
+            android:name=".activty.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.home"/>
         <activity
@@ -33,16 +33,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activty.RegisterActivity"
+            android:name=".activty.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".onboarding"
             android:exported="false" />
         <activity
-            android:name=".Activty.LoginActivity"
+            android:name=".activty.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".Activty.MainActivity"
+            android:name=".activty.MainActivity"
             android:exported="false" />
 
         <meta-data

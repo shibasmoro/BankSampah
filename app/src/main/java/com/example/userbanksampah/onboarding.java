@@ -11,7 +11,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.userbanksampah.Activty.LoginActivity;
+import com.example.userbanksampah.activty.LoginActivity;
 import com.example.userbanksampah.databinding.ActivityOnboardingBinding;
 
 public class onboarding extends AppCompatActivity {
