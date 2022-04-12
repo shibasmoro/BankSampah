@@ -10,12 +10,11 @@ import java.util.ArrayList;
 public class NoteDiffCallback extends DiffUtil.Callback {
     private final ArrayList<Sampah> mOldNoteList;
     private final ArrayList<Sampah> mNewNoteList;
+
     public NoteDiffCallback(ArrayList<Sampah> oldNoteList, ArrayList<Sampah> newNoteList) {
         this.mOldNoteList = oldNoteList;
         this.mNewNoteList = newNoteList;
     }
-
-
 
     @Override
     public int getOldListSize() {
@@ -35,10 +34,7 @@ public class NoteDiffCallback extends DiffUtil.Callback {
 
         final Sampah oldData = mOldNoteList.get(oldItemPosition);
         final Sampah newData= mNewNoteList.get(newItemPosition);
-
-
-
-        return true;
+        return oldData.getSampah() == newData.getSampah();
     }
 
 

@@ -38,7 +38,7 @@ public class KategoriSampahAdapter extends RecyclerView.Adapter<KategoriSampahAd
 
     @Override
     public void onBindViewHolder(@NonNull SampahHolder holder, int position) {
-        row_index =position;
+
             holder.binding.textview.setText(data.get(position).getKategori());
             holder.itemView.setOnClickListener(v->itemClick.Click(data.get(holder.getAdapterPosition()))
             );
@@ -49,6 +49,7 @@ public class KategoriSampahAdapter extends RecyclerView.Adapter<KategoriSampahAd
         return data.size();
     }
 
+    // ini inner class dari Kategori sampah
     public class SampahHolder extends RecyclerView.ViewHolder {
         public final StaticRvItemBinding binding;
         public SampahHolder(@NonNull StaticRvItemBinding binding) {
@@ -56,6 +57,7 @@ public class KategoriSampahAdapter extends RecyclerView.Adapter<KategoriSampahAd
             this.binding =binding;
         }
     }
+
     // buat interface di dalam kelas
     public interface ItemClick{
         void Click(KategoriSampah data);

@@ -40,6 +40,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        getSupportActionBar().hide();
+
         PreferencesApp pref = new PreferencesApp(this);
 
         Binding = ActivityHomeBinding.inflate(getLayoutInflater());
@@ -79,16 +81,6 @@ public class HomeActivity extends AppCompatActivity {
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();
     }
-     */
-
-
-    /*
-    public void callback(int position, ArrayList<DynamicRvModel> items) {
-        dynamicRvAdapter = new DynamicRvAdapter(items);
-        dynamicRvAdapter.notifyDataSetChanged();
-        recyclerView2.setAdapter(dynamicRvAdapter);
-    }
-
      */
 
    private void setKategoriSampah(ArrayList<KategoriSampah> dataKategori){

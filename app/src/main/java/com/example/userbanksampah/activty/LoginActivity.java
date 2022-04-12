@@ -20,11 +20,10 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -33,12 +32,18 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        loginViewModel.getNasabah().observe(this, adata -> {
+        loginViewModel.nasabah.observe(this, adata -> {
             if (adata.getNama().equals("eror")) {
                 Toast.makeText(getApplicationContext(), "Username dan Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
             } else {
                 Move_To_Home(adata);
             }
+
+        });
+        loginViewModel.message.observe(this,adata->{
+           if (adata.isEmpty() == false){
+               Toast.makeText(getApplicationContext(), adata, Toast.LENGTH_SHORT).show();
+           }
 
         });
     }
@@ -50,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean is_empty(TextView data1, TextView data2) {
+
         boolean param = false;
         if (data1.getText().toString().isEmpty()) {
             data1.setError("Harap Masukan Username");
@@ -59,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             data2.setError("Harap Masukan Password");
             param = true;
         }
+
         return param;
     }
 
@@ -68,8 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
         PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());
         PreferencesApp.setInt(PreferencesApp.Kode, 1);
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
 }

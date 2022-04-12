@@ -93,7 +93,7 @@ public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.Static
         if (select) {
             if (position == 0)
                 holder.linearLayout.setBackgroundResource(R.drawable.static_rv_selected);
-            select = false;
+                select = false;
         } else {
             if (row == position) {
                 holder.linearLayout.setBackgroundResource(R.drawable.static_rv_selected);

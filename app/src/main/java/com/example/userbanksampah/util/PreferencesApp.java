@@ -17,7 +17,7 @@ public class PreferencesApp {
 
     public PreferencesApp(Context context) {
             this.context = context;
-            this.preferences = context.getSharedPreferences(PREFS_NAME, 0);
+            this.preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         }
 
         public static void setInt(String key, int value) {
