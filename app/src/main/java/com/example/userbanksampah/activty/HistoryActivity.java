@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class HistoryActivity extends AppCompatActivity {
 
     private ActivityHistoryBinding Binding;
-    private String[]bulanDalamAngka ={
+    private final String[]bulanDalamAngka ={
             "01","02","03","04","05","06",
             "07","08","09","10","11","12"
     };
@@ -34,8 +34,8 @@ public class HistoryActivity extends AppCompatActivity {
     String temp;
     String result;
     String resultSend;
-    private StringBuilder builder = new StringBuilder();
-    private NumberFormat formatter = new DecimalFormat("#,###");
+    private final StringBuilder builder = new StringBuilder();
+    private final NumberFormat formatter = new DecimalFormat("#,###");
 
     private MutasiViewModel mutasiModel;
     @Override
@@ -48,7 +48,7 @@ public class HistoryActivity extends AppCompatActivity {
         mutasiModel =new ViewModelProvider(this).get(MutasiViewModel.class);
 
         builder.append(PreferencesApp.getStr(PreferencesApp.Id));
-        builder.append(String.valueOf(Tahun.this_year));
+        builder.append(Tahun.this_year);
         temp =builder.toString();
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.bulan));

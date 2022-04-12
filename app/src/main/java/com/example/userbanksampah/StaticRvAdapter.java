@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class StaticRvAdapter extends RecyclerView.Adapter<StaticRvAdapter.StaticRVViewHolder> {
 
-    private ArrayList<StaticRvModel> items;
+    private final ArrayList<StaticRvModel> items;
     int row = -1;
     UpdateRecyclerView updateRecyclerView;
     Activity activity;

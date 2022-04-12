@@ -16,8 +16,8 @@ public class PreferencesApp {
         public final static String PREFS_NAME = "Mypref";
 
     public PreferencesApp(Context context) {
-            this.context = context;
-            this.preferences = context.getSharedPreferences(PREFS_NAME, 0);
+            PreferencesApp.context = context;
+            preferences = context.getSharedPreferences(PREFS_NAME, 0);
         }
 
         public static void setInt(String key, int value) {

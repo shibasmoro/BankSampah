@@ -26,7 +26,7 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     private EditText NAMA, USERNAME, NUMBER, PASSWORD, p2;
     private Button btnregist;
-    private String link_regist = "https://ublmobilekmmi.web.id/public_html/bank_sampah/register.php";
+    private final String link_regist = "https://ublmobilekmmi.web.id/public_html/bank_sampah/register.php";
 
 
     @Override
@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(RegisterActivity.this,"Register Failed" + e.toString(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Register Failed" + e,Toast.LENGTH_SHORT).show();
                     btnregist.setVisibility(View.VISIBLE);
                 }
 
@@ -83,7 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                Toast.makeText(RegisterActivity.this,"Register Failed" + error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this,"Register Failed" + error,Toast.LENGTH_SHORT).show();
                 btnregist.setVisibility(View.VISIBLE);
 
             }

@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.userbanksampah.databinding.ActivityVerifyBinding;
-import com.example.userbanksampah.viewmodel.VerifyViewModel;
 import com.example.userbanksampah.util.PreferencesApp;
+import com.example.userbanksampah.viewmodel.VerifyViewModel;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

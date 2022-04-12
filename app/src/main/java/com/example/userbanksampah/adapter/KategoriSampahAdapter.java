@@ -1,21 +1,21 @@
 package com.example.userbanksampah.adapter;
 
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.userbanksampah.databinding.StaticRvItemBinding;
 import com.example.userbanksampah.model.KategoriSampah;
-import com.example.userbanksampah.model.Sampah;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class KategoriSampahAdapter extends RecyclerView.Adapter<KategoriSampahAdapter.SampahHolder> {
-    private ArrayList<KategoriSampah> data = new ArrayList<>();
+    private final ArrayList<KategoriSampah> data = new ArrayList<>();
     int row_index;
     NumberFormat formatter = new DecimalFormat("#,###");
     public void setData(ArrayList<KategoriSampah> param){
@@ -38,7 +38,7 @@ public class KategoriSampahAdapter extends RecyclerView.Adapter<KategoriSampahAd
 
     @Override
     public void onBindViewHolder(@NonNull SampahHolder holder, int position) {
-        row_index =position;
+
             holder.binding.textview.setText(data.get(position).getKategori());
             holder.itemView.setOnClickListener(v->itemClick.Click(data.get(holder.getAdapterPosition()))
             );

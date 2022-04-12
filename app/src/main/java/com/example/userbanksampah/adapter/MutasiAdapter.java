@@ -14,8 +14,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
-    private ArrayList<Mutasi> dataMutasi = new ArrayList<>();
-    NumberFormat formatter = new DecimalFormat("#,###");
+    private final ArrayList<Mutasi> dataMutasi = new ArrayList<>();
+    NumberFormat formatter = new DecimalFormat("#.###");
     public MutasiAdapter(ArrayList<Mutasi> data){
         dataMutasi.clear();
         dataMutasi.addAll(data);
@@ -32,13 +32,14 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
     @Override
     public void onBindViewHolder(@NonNull MutasiAdapter.Holder holder, int position) {
         holder.binding.namaSampah.setText(dataMutasi.get(position).getSampah());
-        holder.binding.biayaSampah.setText("Rp."+formatter.format(dataMutasi.get(position).getHarga()));
-        holder.binding.totalSampah.setText(dataMutasi.get(position).getTotal()+"KG");
+        holder.binding.biayaSampah.setText("Rp. "+formatter.format(dataMutasi.get(position).getHarga()));
+        holder.binding.totalSampah.setText(dataMutasi.get(position).getTotal()+" KG");
 
     }
 
     @Override
     public int getItemCount() {
+
         return dataMutasi.size();
     }
 

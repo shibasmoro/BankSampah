@@ -2,7 +2,6 @@ package com.example.userbanksampah.helper;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.example.userbanksampah.adapter.SampahAdapter;
 import com.example.userbanksampah.model.Sampah;
 
 import java.util.ArrayList;
@@ -36,9 +35,8 @@ public class NoteDiffCallback extends DiffUtil.Callback {
         final Sampah oldData = mOldNoteList.get(oldItemPosition);
         final Sampah newData= mNewNoteList.get(newItemPosition);
 
+        return oldData.getSampah() == newData.getSampah();
 
-
-        return true;
     }
 
 

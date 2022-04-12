@@ -18,7 +18,7 @@ import org.w3c.dom.Text;
 public class ViewPageAdapter extends PagerAdapter {
     Context context;
 
-    int images[] = {
+    int[] images = {
             R.drawable.onboarding,
             R.drawable.onboarding2,
             R.drawable.onboarding1,
@@ -26,14 +26,14 @@ public class ViewPageAdapter extends PagerAdapter {
 
 
     };
-    int heading[] = {
+    int[] heading = {
             R.string.heading_one,
             R.string.heading_two,
             R.string.heading_three,
             R.string.heading_fourth
 
     };
-    int description[] = {
+    int[] description = {
             R.string.desc_one,
             R.string.desc_two,
             R.string.desc_three,
@@ -51,18 +51,18 @@ public class ViewPageAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == (LinearLayout)object;
+        return view == object;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LayoutInflater layoutInflater = (LayoutInflater)  context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater)  context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slider_layout,container,false);
 
-        ImageView slideimage= (ImageView) view.findViewById(R.id.imagetitle);
-        TextView slidetitle= (TextView) view.findViewById(R.id.heading);
-        TextView slideskripsi= (TextView) view.findViewById(R.id.description);
+        ImageView slideimage= view.findViewById(R.id.imagetitle);
+        TextView slidetitle= view.findViewById(R.id.heading);
+        TextView slideskripsi= view.findViewById(R.id.description);
 
         slideimage.setImageResource(images[position]);
         slidetitle.setText(heading[position]);
