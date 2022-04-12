@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class SampahAdapter extends RecyclerView.Adapter<SampahAdapter.SampahHolder> {
 
-    private ArrayList<Sampah> dataSampah = new ArrayList<>();
+    private final ArrayList<Sampah> dataSampah = new ArrayList<>();
     NumberFormat formatter = new DecimalFormat("#,###");
 
     public void setDataSampah(ArrayList<Sampah> psampah){
@@ -49,7 +49,7 @@ public class SampahAdapter extends RecyclerView.Adapter<SampahAdapter.SampahHold
     }
 
     public class SampahHolder extends RecyclerView.ViewHolder {
-        private DynamicRvItemBinding binding;
+        private final DynamicRvItemBinding binding;
         public SampahHolder(@NonNull DynamicRvItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

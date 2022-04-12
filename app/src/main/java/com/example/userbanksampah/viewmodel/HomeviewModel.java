@@ -17,13 +17,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeviewModel extends ViewModel {
-    private MutableLiveData<Integer> _data = new MutableLiveData<>();
+    private final MutableLiveData<Integer> _data = new MutableLiveData<>();
     public  LiveData<Integer> data =_data;
 
-    private MutableLiveData<ArrayList<KategoriSampah>> _dataKategori  = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<KategoriSampah>> _dataKategori  = new MutableLiveData<>();
     public LiveData<ArrayList<KategoriSampah>>dataKategori =_dataKategori;
 
-    private MutableLiveData<ArrayList<Sampah>> _dataSampah  = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<Sampah>> _dataSampah  = new MutableLiveData<>();
     public LiveData<ArrayList<Sampah>>dataSampah =_dataSampah;
 
 

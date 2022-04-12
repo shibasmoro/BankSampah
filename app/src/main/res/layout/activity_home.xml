@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="75dp"
-            android:fontFamily="@font/poppins_bold"
+            android:fontFamily="@font/poppins_light"
             android:text="@string/angka"
             android:textSize="13sp"
             android:textColor="@color/white"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="35dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/saldo"
                 android:textColor="@color/white"
                 android:textSize="18sp">
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_semibold"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/uang"
                 android:textColor="@color/white"
                 android:textSize="18sp"></TextView>
@@ -137,8 +137,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
+                        android:textSize="12sp"
                         android:layout_marginTop="23dp"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins_light"
                         android:text="@string/History"
                         android:textColor="@color/buttontext"></TextView>
 
@@ -169,8 +170,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
+                        android:textSize="12sp"
                         android:layout_marginTop="23dp"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins_light"
                         android:text="@string/verify"
                         android:textColor="@color/buttontext"></TextView>
 

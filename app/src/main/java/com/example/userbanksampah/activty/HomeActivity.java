@@ -8,21 +8,16 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.userbanksampah.DynamicRvAdapter;
 import com.example.userbanksampah.DynamicRvModel;
-import com.example.userbanksampah.R;
-import com.example.userbanksampah.StaticRvAdapter;
-import com.example.userbanksampah.StaticRvModel;
-import com.example.userbanksampah.UpdateRecyclerView;
 import com.example.userbanksampah.adapter.KategoriSampahAdapter;
 import com.example.userbanksampah.adapter.SampahAdapter;
 import com.example.userbanksampah.databinding.ActivityHomeBinding;
 import com.example.userbanksampah.model.KategoriSampah;
 import com.example.userbanksampah.model.Sampah;
-import com.example.userbanksampah.viewmodel.HomeviewModel;
 import com.example.userbanksampah.util.PreferencesApp;
+import com.example.userbanksampah.viewmodel.HomeviewModel;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -60,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         // mendapatkan semua kategori sampah yang ada
         model.getKategori();
 
-        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
+        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, com.example.userbanksampah.activty.PengajuanActivity.class)));
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
         // observe data kategori sampah

@@ -18,13 +18,13 @@ import retrofit2.Response;
 
 public class MutasiViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<Mutasi>> _data = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<Mutasi>> _data = new MutableLiveData<>();
     public LiveData<ArrayList<Mutasi>> data =_data;
 
-    private MutableLiveData<Boolean> _loading =new MutableLiveData<>();
+    private final MutableLiveData<Boolean> _loading =new MutableLiveData<>();
     public LiveData<Boolean> loading =_loading;
 
-    private MutableLiveData<DetilMutasi> _transaction =new MutableLiveData<>();
+    private final MutableLiveData<DetilMutasi> _transaction =new MutableLiveData<>();
     public LiveData<DetilMutasi> transaction =_transaction;
 
     public void getData(String id){

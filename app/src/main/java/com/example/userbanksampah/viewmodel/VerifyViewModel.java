@@ -16,7 +16,7 @@ public class VerifyViewModel extends ViewModel {
 
     private Pengajuan pengajuan = new Pengajuan();
 
-    private MutableLiveData<Integer> minimal = new MutableLiveData<>();
+    private final MutableLiveData<Integer> minimal = new MutableLiveData<>();
     public  LiveData<Integer> _minimal = minimal;
 
     public void getMaxTransaction(String id){

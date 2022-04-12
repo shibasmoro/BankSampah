@@ -2,8 +2,8 @@ package com.example.userbanksampah;
 
 public class StaticRvModel
 {
-    private int image;
-    private String text;
+    private final int image;
+    private final String text;
 
     public StaticRvModel(int image, String text){
         this.image = image;
