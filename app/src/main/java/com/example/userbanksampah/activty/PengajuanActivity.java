@@ -2,14 +2,19 @@ package com.example.userbanksampah.activty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.userbanksampah.databinding.ActivityVerifyBinding;
+import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.util.PreferencesApp;
 import com.example.userbanksampah.viewmodel.VerifyViewModel;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -18,7 +23,6 @@ public class PengajuanActivity extends AppCompatActivity {
 
     private VerifyViewModel model;
     private String id_param;
-
     private ActivityVerifyBinding binding;
 
     @Override
@@ -35,7 +39,7 @@ public class PengajuanActivity extends AppCompatActivity {
         model.getMaxTransaction();
         model._minimal.observe(this, data -> {
 
-            if (data <=1000) {
+            if (data <= 1000) {
                 binding.verifikasi.setEnabled(false);
                 binding.textView.setText("Maaf Saldo Anda Tidak cukup");
             } else {
@@ -44,11 +48,9 @@ public class PengajuanActivity extends AppCompatActivity {
             }
 
         });
-
     }
 
     public void backbutton(View view) {
-        startActivity(new Intent(this, HomeActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+        startActivity(new Intent(this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 }

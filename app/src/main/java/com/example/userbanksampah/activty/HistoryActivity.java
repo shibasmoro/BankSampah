@@ -1,41 +1,38 @@
 package com.example.userbanksampah.activty;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.example.userbanksampah.databinding.ActivityHistoryBinding;
 import com.example.userbanksampah.model.Mutasi;
-import com.example.userbanksampah.R;
 import com.example.userbanksampah.viewmodel.MutasiViewModel;
 import com.example.userbanksampah.adapter.MutasiAdapter;
 import com.example.userbanksampah.util.PreferencesApp;
-import com.example.userbanksampah.util.Tahun;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class HistoryActivity extends AppCompatActivity {
 
     private ActivityHistoryBinding Binding;
-    private final String[]bulanDalamAngka ={
-            "01","02","03","04","05","06",
-            "07","08","09","10","11","12"
-    };
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
+
     // sebagai param buat cek mutasi
     String temp;
-    String result;
-    String resultSend;
-    private final StringBuilder builder = new StringBuilder();
-    private final NumberFormat formatter = new DecimalFormat("#,###");
+
+    private String tanggalAwal;
+    private String tanggalAkhir;
+
+    private final NumberFormat formatter = new DecimalFormat("#,###.##");
 
     private MutasiViewModel mutasiModel;
     @Override
@@ -45,42 +42,59 @@ public class HistoryActivity extends AppCompatActivity {
         Binding = ActivityHistoryBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
 
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
         mutasiModel =new ViewModelProvider(this).get(MutasiViewModel.class);
 
-        builder.append(PreferencesApp.getStr(PreferencesApp.Id));
-        builder.append(Tahun.this_year);
-        temp =builder.toString();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.bulan));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Binding.spinnerYear.setAdapter(adapter);
-        Binding.spinnerYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-               switch (i){
-                   case 0: case 1: case 2: case 3: case 4: case 5: case 6:
-                   case 7: case 8: case 9: case 10: case 11:
-                     result =temp+bulanDalamAngka[i];
-                     resultSend =result;
-                     result ="";
-                   break;
-                   default:showToast("yang bener dong");
-               }
-           }
-           @Override
-           public void onNothingSelected(AdapterView<?> adapterView) {
-           }
-       });
+        Binding.tanngalAwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar date = Calendar.getInstance();
+                datePickerDialog = new DatePickerDialog(HistoryActivity.this, new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                        Calendar newDate = Calendar.getInstance();
+                        newDate.set(year, monthOfYear, dayOfMonth);
+
+
+
+                        Binding.tanngalAwal.setText("Tanggal Awal : "+dateFormatter.format(newDate.getTime()));
+                        tanggalAwal =dateFormatter.format(newDate.getTime());
+                    }
+
+                },date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
+
+        Binding.tanngalAkhir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar date = Calendar.getInstance();
+                datePickerDialog = new DatePickerDialog(HistoryActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        Calendar newDate = Calendar.getInstance();
+                        newDate.set(year, monthOfYear, dayOfMonth);
+                        Binding.tanngalAkhir.setText("Tanggal Akhir : "+dateFormatter.format(newDate.getTime()));
+                        tanggalAkhir =dateFormatter.format(newDate.getTime());
+                    }
+
+                },date.get(Calendar.YEAR), date.get(Calendar.MONTH), date.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
 
         Log.d("history", "onCreate: "+temp);
         Binding.rvMutasi.setHasFixedSize(false);
         Binding.btnCekMutasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //showToast(resultSend);
 
-                mutasiModel.getData(resultSend);
-                mutasiModel.getMoney(resultSend);
+                mutasiModel.getData(tanggalAwal,tanggalAkhir,PreferencesApp.getStr(PreferencesApp.Id));
                 mutasiModel.data();
 
                 mutasiModel.loading.observe(HistoryActivity.this,data->{
@@ -98,7 +112,7 @@ public class HistoryActivity extends AppCompatActivity {
                     }
 
                 });
-
+                /*
                 mutasiModel.transaction.observe(HistoryActivity.this,data->{
                     if (data.getHarga()>0){
                         Binding.total.setText(""+formatter.format(data.getHarga()));
@@ -107,8 +121,9 @@ public class HistoryActivity extends AppCompatActivity {
                         Binding.total.setText("");
                         Binding.adminTugas.setText("");
                     }
-
                 });
+
+                 */
 
             }
         });
@@ -131,4 +146,5 @@ public class HistoryActivity extends AppCompatActivity {
             Binding.progressBar.setVisibility(View.GONE);
         }
     }
+
 }

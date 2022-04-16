@@ -2,18 +2,25 @@ package com.example.userbanksampah.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DetilMutasi {
-    @SerializedName("nama")
-    private String nama_admin;
+public class DetilMutasi  {
+    @SerializedName("nama_sampah")
+    private String sampah;
 
     @SerializedName("harga")
     private int harga;
 
-    public String getNama_admin() {
-        return nama_admin;
+    @SerializedName("total")
+    private float total;
+
+    public String getSampah() {
+        return sampah;
     }
 
     public int getHarga() {
         return harga;
+    }
+
+    public float getTotal() {
+        return total;
     }
 }

@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Userbanksampah">
         <activity
+            android:name=".activty.DetilMutasiActivity"
+            android:exported="false" />
+        <activity
             android:name=".activty.HistoryActivity"
             android:exported="false" />
         <activity
@@ -22,7 +25,7 @@
         <activity
             android:name=".activty.HomeActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light"/>
+            android:theme="@style/Theme.AppCompat.Light" />
         <activity
             android:name=".splashscreen"
             android:exported="true">

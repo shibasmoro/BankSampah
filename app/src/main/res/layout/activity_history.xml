@@ -8,22 +8,32 @@
     android:background="@color/white"
     tools:context=".activty.HistoryActivity">
 
-    <Spinner
-        tools:listitem=""
-        android:id="@+id/spinner_year"
-        android:layout_width="200dp"
-        android:layout_height="35dp"
-        android:popupBackground="@drawable/shapeoutline"
-        android:textAlignment="center"
-        android:background="@drawable/shapeoutline"
-        android:popupTheme="@color/buttontext"
-        android:spinnerMode="dialog"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/tanngal_awal"
+        style="?android:spinnerItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal Awal"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <Button
+        android:id="@+id/tanngal_akhir"
+        style="?android:spinnerItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Tanggal Akhir"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tanngal_awal"
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMutasi"
@@ -45,18 +55,6 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/adminTugas"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:text="Admin:"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvMutasi"
-        app:layout_goneMarginTop="10dp" />
-
-    <TextView
         android:id="@+id/notFound"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -70,24 +68,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/total"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:text="Total:"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/adminTugas"
-        app:layout_constraintTop_toBottomOf="@id/rvMutasi"
-        app:layout_goneMarginTop="10dp" />
+
 
     <Button
         android:id="@+id/btnCekMutasi"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_year"
+        app:layout_constraintTop_toBottomOf="@+id/tanngal_akhir"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Cek Mutasi"
@@ -109,7 +96,7 @@
             android:layout_marginStart="20dp"
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
-            android:text="Nama Sampah"
+            android:text="Tanggal"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +108,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
-            android:text="Bobot"
+            android:text="Admin"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +121,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
-            android:text="Harga Sampah"
+            android:text="Total Setor"
             android:textColor="@color/black"
             android:layout_marginEnd="20dp"
             android:textSize="12sp"

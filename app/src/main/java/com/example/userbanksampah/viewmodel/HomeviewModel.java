@@ -26,6 +26,9 @@ public class HomeviewModel extends ViewModel {
     private final MutableLiveData<ArrayList<Sampah>> _dataSampah  = new MutableLiveData<>();
     public LiveData<ArrayList<Sampah>>dataSampah =_dataSampah;
 
+    private final MutableLiveData<Boolean> _loading =new MutableLiveData<>();
+    public LiveData<Boolean> loading =_loading;
+
 
     public void getKategori(){
        RetrofitImpl.loginrequest().kategoriSampah().enqueue(new Callback<ArrayList<KategoriSampah>>() {
@@ -44,12 +47,13 @@ public class HomeviewModel extends ViewModel {
     }
 
     public void getSaldo(String id){
+        _loading.setValue(true);
         RetrofitImpl.show_saldo().your_saldo(id).enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if (response.isSuccessful()){
                    _data.setValue(response.body());
-                    //Log.d("HomeviewModel", "onResponse: ");
+                    _loading.setValue(false);
                 }
             }
 

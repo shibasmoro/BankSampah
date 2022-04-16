@@ -25,10 +25,10 @@ public interface RetrofitConfig {
     Call<Pengajuan> your_minimum(@Query("id_nasabah")String id);
 
     @GET("get_mutasi.php")
-    Call<ArrayList<Mutasi>> mutasi(@Query("id_nasabah")String id);
+    Call<ArrayList<Mutasi>> mutasi(@Query("tanggal_awal")String tanggalAwal ,@Query("tanggal_akhir") String tanngalAkhir, @Query("id_nasabah") String id_nasabah  );
 
     @GET("get_total.php")
-    Call<DetilMutasi>your_transaction(@Query("id_nasabah") String id);
+    Call<ArrayList<DetilMutasi>>your_transaction(@Query("id_setoran") String id);
 
     @GET("get_kategori.php")
     Call<ArrayList<KategoriSampah>> kategoriSampah();
@@ -36,5 +36,4 @@ public interface RetrofitConfig {
     @GET("getHargaSampah.php")
     Call<ArrayList<Sampah>> detailSampah(@Query("id_kategori")String id );
 
-    // ini perubahan yang ada pada fitur
 }
