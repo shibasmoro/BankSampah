@@ -19,13 +19,19 @@ public class VerifyViewModel extends ViewModel {
     private final MutableLiveData<Integer> minimal = new MutableLiveData<>();
     public  LiveData<Integer> _minimal = minimal;
 
+    private final MutableLiveData<String> _pesan = new MutableLiveData<>();
+    public  LiveData<String> pesan= _pesan;
+
     public void getMaxTransaction(String id){
        RetrofitImpl.loginrequest().your_minimum(id).enqueue(new Callback<Pengajuan>() {
            @Override
            public void onResponse(Call<Pengajuan> call, Response<Pengajuan> response) {
-               pengajuan = response.body();
 
-               minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
+               if (response.isSuccessful()){
+                   pengajuan = response.body();
+                   minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
+               }
+
 
 
            }
@@ -36,9 +42,20 @@ public class VerifyViewModel extends ViewModel {
            }
        });
     }
+    public void addPengajuan(String id_pengajuan,String id_nasabah,int jumlah_ajuna,String tanggal_ajuan){
+        RetrofitImpl.show_saldo().addPengajuan(id_pengajuan,id_nasabah,jumlah_ajuna,tanggal_ajuan).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()){
+                    _pesan.setValue(response.body());
+                }
+            }
 
-    public void getMaxTransaction(){
-       //max_transaction;
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 
 

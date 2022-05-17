@@ -10,7 +10,10 @@ import com.example.userbanksampah.model.Sampah;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RetrofitConfig {
@@ -35,5 +38,14 @@ public interface RetrofitConfig {
 
     @GET("getHargaSampah.php")
     Call<ArrayList<Sampah>> detailSampah(@Query("id_kategori")String id );
+
+    @FormUrlEncoded
+    @POST(" insert_pengajuan_nasabah.php")
+    Call<String> addPengajuan(
+            @Field("id") String id_ajuan,
+            @Field("nasabah") String id_nasabah,
+            @Field("jumlah") int jumlah,
+            @Field("tanggal_ajuan") String tanggal
+    );
 
 }
