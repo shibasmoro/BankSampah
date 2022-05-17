@@ -25,40 +25,56 @@ import java.util.ArrayList;
 public class DetilMutasiActivity extends AppCompatActivity {
     private ActivityDetilMutasiBinding Binding;
     private DetilMutasimodel model;
+    private Mutasi mutasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Binding =ActivityDetilMutasiBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
-        Mutasi mutasi = (Mutasi) getIntent().getParcelableExtra("ID");
-        Log.d("coba", "onCreate: "+mutasi.getId_setor());
-        model = new ViewModelProvider(this).get(DetilMutasimodel.class);
+        mutasi =getIntent().getParcelableExtra("ID");
 
-        Binding.detilAdmin.setText(mutasi.getAdmin());
-        Binding.detilTanggal.setText(mutasi.getTanggal());
-        Binding.detilSetor.setText(FormatAngka.format(mutasi.getHarga()));
+        Log.d("coba", "onCreate: "+mutasi.getNama_nasabah());
+        model = new ViewModelProvider(this).get(DetilMutasimodel.class);
+        showToast(mutasi.getNama_nasabah());
 
         model.getDetilMutasi(mutasi.getId_setor());
-        model.data.observe(this,data->{
-            showData(data);
+        model.data.observe(DetilMutasiActivity.this,response->{
+            if (!response.isEmpty()){
+                showData(response);
+                Log.d("coba", "onCreate: "+response);
+            }else{
+                showToast("Data tidak ada");
+                showData(response);
+            }
         });
-        model.loading.observe(this ,data->{
-            showLoading(data);
-        });
+
+
+        Binding.namaPengaju.setText(mutasi.getNama_nasabah());
+        Binding.total.setText(getString(R.string.format_angka,FormatAngka.format(mutasi.getHarga())));
+        Binding.tanggalTransaksi.setText(mutasi.getTanggal());
+
+
+
+
     }
 
-    public void showLoading(Boolean isLoad){
-        if (isLoad){
-            Binding.progressBar.setVisibility(View.VISIBLE);
-        }else{
-            Binding.progressBar.setVisibility(View.GONE);
-        }
-    }
+//    public void showLoading(Boolean isLoad){
+//        if (isLoad){
+//            Binding.progressBar.setVisibility(View.VISIBLE);
+//        }else{
+//            Binding.progressBar.setVisibility(View.GONE);
+//        }
+//    }
 
     public void showData(ArrayList<DetilMutasi> paramData){
-        Binding.rvMutasi.setLayoutManager(new LinearLayoutManager(this));
-        DetilMutasiAdapter adapter = new DetilMutasiAdapter (paramData);
-        Binding.rvMutasi.setAdapter(adapter);
+        Binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DetilMutasiAdapter adapter = new DetilMutasiAdapter (this,paramData);
+        Binding.recyclerView.setAdapter(adapter);
     }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }

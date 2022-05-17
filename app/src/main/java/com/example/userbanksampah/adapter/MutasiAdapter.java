@@ -1,71 +1,105 @@
 package com.example.userbanksampah.adapter;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.activity.result.contract.ActivityResultContracts;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.userbanksampah.activty.DetilMutasiActivity;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.databinding.ItemMutasiBinding;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
+    private Context context;
+    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat dateFormatter1 = new SimpleDateFormat("yyyy-MMM-dd");
 
     private final ArrayList<Mutasi> dataMutasi = new ArrayList<>();
     NumberFormat formatter = new DecimalFormat("#,###.##");
-    public MutasiAdapter(ArrayList<Mutasi> data){
+
+    public MutasiAdapter( Context context,ArrayList<Mutasi> data) {
         dataMutasi.clear();
         dataMutasi.addAll(data);
+        this.context =context;
     }
+
     @NonNull
     @Override
     public MutasiAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemMutasiBinding binding = ItemMutasiBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        ItemMutasiBinding binding = ItemMutasiBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new Holder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MutasiAdapter.Holder holder, int position) {
-        holder.binding.tanggal.setText(dataMutasi.get(position).getTanggal());
-        holder.binding.total.setText("Rp. "+formatter.format(dataMutasi.get(position).getHarga()));
-        holder.binding.admin.setText(dataMutasi.get(position).getAdmin());
-        holder.setdata(dataMutasi.get(position));
-
-
-    }
+        holder.showdata(dataMutasi.get(position));
+        holder.itemView.setOnClickListener(v->{
+           Intent detil = new Intent(context, DetilMutasiActivity.class);
+           detil.putExtra("ID", dataMutasi.get(position));
+          holder.itemView.getContext().startActivity(detil);
+       });
+        }
 
     @Override
     public int getItemCount() {
         return dataMutasi.size();
     }
 
+    
     public class Holder extends RecyclerView.ViewHolder {
         ItemMutasiBinding binding;
+        long tanggalLong;
+        Date tanngaldate;
+
         public Holder(@NonNull ItemMutasiBinding binding) {
             super(binding.getRoot());
-            this.binding =binding;
+            this.binding = binding;
         }
 
-        public void setdata (Mutasi data){
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent detil = new Intent(itemView.getContext(),DetilMutasiActivity.class);
-                    detil.putExtra("ID",data);
-                    itemView.getContext().startActivity(detil);
-                }
-            });
+        public void showdata(Mutasi data) {
+            tanggalLong = dateToMilis(data.getTanggal());
+            tanngaldate = longToDate(tanggalLong);
+            binding.tvtanggal.setText(dateFormatter1.format(tanngaldate));
+            binding.etHarga.setText("Rp. " + formatter.format(data.getHarga()));
+            binding.admin.setText(data.getNama_admin());
+        }
 
+
+
+        private Long dateToMilis(String data) {
+            Calendar calendar  =Calendar.getInstance();
+            try {
+                Date date =dateFormatter.parse(data);
+                calendar.setTime(date);
+
+            } catch (Exception e) {
+                showToast(e.getMessage());
+            }
+
+            return calendar.getTimeInMillis();
+        }
+
+        private Date longToDate(long data) {
+            Date date;
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(data);
+            date = calendar.getTime();
+            return date;
 
         }
     }
+    public void showToast(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

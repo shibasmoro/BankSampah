@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="nominal">Rp.320.000</string>
+    <string name="tanggal">2022–03-08</string>
     <string name="app_name">Userbanksampah</string>
     <string name="heading_one">Pungut</string>
     <string name="welcome">Welcome,</string>
@@ -10,6 +12,9 @@
     <string name="History">Riwayat </string>
     <string name="logout">Keluar </string>
     <string name="uang">Rp.1.000.000 </string>
+    <string name="format_angka">Rp.%s </string>
+    <string name="bobot_detail">%s KG </string>
+    <string name="bobot_detail2">%s lITER </string>
     <string name="angka">085770538454</string>
     <string name="category">Kategori Sampah</string>
     <string name="Jenis">Jenis Sampah</string>
@@ -21,6 +26,15 @@
     <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
     <string name="loginpage">Use the application according to policy rules. Any kinds of violoations will be subject to sanctions.</string>
+    <string name="logosplashscreen">Logo</string>
+    <string name="nama">nama</string>
+    <string name="detail_mutasi">Detail Mutasi</string>
+    <string name="arya_enrico">Arya</string>
+    <string name="tanggaltv">tanggal</string>
+    <string name="daftar_sampah">Daftar Sampah</string>
+    <string name="total">Total</string>
+    <string name="gayung">gayung</string>
+    <string name="bobots">bobot</string>
     <string-array name="bulan">
         <item>Januari</item>
         <item>Februari</item>

@@ -6,8 +6,8 @@ public class DetilMutasi  {
     @SerializedName("nama_sampah")
     private String sampah;
 
-    @SerializedName("harga")
-    private int harga;
+    @SerializedName("harga_nasabah")
+    private int harga_nasabah;
 
     @SerializedName("total")
     private float total;
@@ -17,7 +17,7 @@ public class DetilMutasi  {
     }
 
     public int getHarga() {
-        return harga;
+        return harga_nasabah;
     }
 
     public float getTotal() {
