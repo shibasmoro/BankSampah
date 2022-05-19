@@ -6,13 +6,13 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.userbanksampah.DynamicRvAdapter;
-import com.example.userbanksampah.DynamicRvModel;
+import com.example.userbanksampah.R;
 import com.example.userbanksampah.adapter.KategoriSampahAdapter;
 import com.example.userbanksampah.adapter.SampahAdapter;
 import com.example.userbanksampah.databinding.ActivityHomeBinding;
@@ -21,16 +21,9 @@ import com.example.userbanksampah.model.Sampah;
 import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.util.PreferencesApp;
 import com.example.userbanksampah.viewmodel.HomeviewModel;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-
-    ArrayList<DynamicRvModel> items = new ArrayList<>();
-    DynamicRvAdapter dynamicRvAdapter;
-
     private ActivityHomeBinding Binding;
     private HomeviewModel model;
 
@@ -39,23 +32,16 @@ public class HomeActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        getSupportActionBar().hide();
-
-        PreferencesApp pref = new PreferencesApp(this);
+        //PreferencesApp pref = new PreferencesApp(this);
 
         Binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
         model = new ViewModelProvider(this).get(HomeviewModel.class);
 
         Binding.nama.setText(PreferencesApp.getStr(PreferencesApp.Nama));
+
         model.getSaldo(PreferencesApp.getStr(PreferencesApp.Id));
-
-        // medapat saldo saat ini
-        model.data.observe(this, data -> {
-            //NumberFormat formatter = new DecimalFormat("#,###.##");
-            Binding.saldo.setText("Rp." + FormatAngka.format(data));
-
-        });
+        model.validasiAjuan(PreferencesApp.getStr(PreferencesApp.Id));
 
         model.loading.observe(this,data->{
             showLoading(data);
@@ -65,16 +51,28 @@ public class HomeActivity extends AppCompatActivity {
                 Binding.saldo.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         });
+
+        // medapat saldo saat ini
+        model.data.observe(this, data -> Binding.saldo.setText(getString(R.string.format_angka,FormatAngka.format(data))));
+
+
         // mendapatkan semua kategori sampah yang ada
         model.getKategori();
 
-        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, com.example.userbanksampah.activty.PengajuanActivity.class)));
+        Binding.pengajuan.setOnClickListener(view ->
+                model.checkAjuan.observe(this,dataAjuan->{
+                    if (dataAjuan >=3){
+                        startActivity(new Intent(HomeActivity.this, com.example.userbanksampah.activty.PengajuanActivity.class));
+                    }else{
+                        showToast(getString(R.string.gak_bisa_ajuan));
+                    }
+                }));
+
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
         // observe data kategori sampah
-        model.dataKategori.observe(this,data->{
-            setKategoriSampah(data);
-        });
+        model.dataKategori.observe(this, this::setKategoriSampah);
+        model.pesanError.observe(this,data->showToast(data));
     }
 
     /*
@@ -95,14 +93,12 @@ public class HomeActivity extends AppCompatActivity {
        adapter.setData(dataKategori);
        Binding.rv1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
        Binding.rv1.setAdapter(adapter);
-       adapter.setItemClick(data -> setSampah(data));
+       adapter.setItemClick(this::setSampah);
    }
 
    private void setSampah(KategoriSampah sampah){
         model.getSampah(sampah.getId());
-        model.dataSampah.observe(this,dataSampah->{
-                showDataSampah(dataSampah);
-        });
+        model.dataSampah.observe(this,dataSampah-> showDataSampah(dataSampah));
    }
    private void showDataSampah(ArrayList<Sampah> data){
        SampahAdapter adapter = new SampahAdapter();
@@ -117,6 +113,10 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             Binding.progressBar.setVisibility(View.GONE);
         }
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }

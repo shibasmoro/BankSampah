@@ -27,8 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText NAMA, USERNAME, NUMBER, PASSWORD, p2;
     private Button btnregist;
     private final String link_regist = "https://ublmobilekmmi.web.id/public_html/bank_sampah/register.php";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

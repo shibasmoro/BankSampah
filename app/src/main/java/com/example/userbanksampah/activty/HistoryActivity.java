@@ -25,27 +25,21 @@ public class HistoryActivity extends AppCompatActivity {
     private ActivityHistoryBinding Binding;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-  ;
-
-
     private String tanggalAwal;
     private String tanggalAkhir;
     private long tanggalAwalLong;
     private long tanggalAkhirLong;
-
-
-    // private final NumberFormat formatter = new DecimalFormat("#,###.##");
-
     private MutasiViewModel mutasiModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        PreferencesApp data = new PreferencesApp(this);
+        //PreferencesApp data = new PreferencesApp(this);
         super.onCreate(savedInstanceState);
         Binding = ActivityHistoryBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
 
         dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
         mutasiModel = new ViewModelProvider(this).get(MutasiViewModel.class);
         Binding.tanngalAwal.setOnClickListener(view -> {
             Calendar date = Calendar.getInstance();
@@ -75,20 +69,15 @@ public class HistoryActivity extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-        Binding.rvMutasi.setHasFixedSize(false);
-
         Binding.btnCekMutasi.setOnClickListener(view -> {
             if (Binding.tanngalAwal.getText().toString().contains("Awal") || Binding.tanngalAwal.getText().toString().contains("Akhir")) {
                 showToast("Harap masukan tanggal awal dan tanggal akhir ");
 
-            }else if(tanggalAwalLong > tanggalAkhirLong) {
+            } else if (tanggalAwalLong > tanggalAkhirLong) {
                 showToast("Masukan format tanggal yang benar");
-            }
-            else {
+            } else {
                 mutasiModel.getData(tanggalAwal, tanggalAkhir, PreferencesApp.getStr(PreferencesApp.Id));
-                mutasiModel.loading.observe(HistoryActivity.this, data1 -> {
-                    showLoading(data1);
-                });
+                mutasiModel.loading.observe(HistoryActivity.this, data1 -> showLoading(data1));
 
                 mutasiModel.data.observe(HistoryActivity.this, response -> {
                     if (response.isEmpty()) {
@@ -101,28 +90,14 @@ public class HistoryActivity extends AppCompatActivity {
                     }
                 });
             }
-
-            /*
-            mutasiModel.transaction.observe(HistoryActivity.this,data->{
-                if (data.getHarga()>0){
-                    Binding.total.setText(""+formatter.format(data.getHarga()));
-                    Binding.adminTugas.setText(data.getNama_admin());
-                }else{
-                    Binding.total.setText("");
-                    Binding.adminTugas.setText("");
-                }
-            });
-
-             */
-
         });
 
     }
 
     private Long dateToMilis(String data) {
-        Calendar calendar  =Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         try {
-            Date date =dateFormatter.parse(data);
+            Date date = dateFormatter.parse(data);
             calendar.setTime(date);
 
         } catch (Exception e) {
@@ -138,7 +113,7 @@ public class HistoryActivity extends AppCompatActivity {
 
     public void showData(ArrayList<Mutasi> paramData) {
         Binding.rvMutasi.setLayoutManager(new LinearLayoutManager(this));
-        MutasiAdapter adapter = new MutasiAdapter(this,paramData);
+        MutasiAdapter adapter = new MutasiAdapter(this, paramData);
         Binding.rvMutasi.setAdapter(adapter);
 
     }

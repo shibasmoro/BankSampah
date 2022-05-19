@@ -1,13 +1,13 @@
 package com.example.userbanksampah.viewmodel;
 
-import android.util.Log;
+
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.userbanksampah.model.DetilMutasi;
-import com.example.userbanksampah.model.Mutasi;
+
 import com.example.userbanksampah.retrofit.RetrofitImpl;
 
 import java.util.ArrayList;
@@ -24,6 +24,9 @@ public class DetilMutasimodel extends ViewModel {
     private final MutableLiveData<Boolean> _loading =new MutableLiveData<>();
     public LiveData<Boolean> loading =_loading;
 
+    private final MutableLiveData<String> _pesanError =new MutableLiveData<>();
+    public LiveData<String> pesanEror =_pesanError;
+
 
     public void getDetilMutasi(String id){
         _loading.setValue(true);
@@ -32,14 +35,13 @@ public class DetilMutasimodel extends ViewModel {
             public void onResponse(Call<ArrayList<DetilMutasi>> call, Response<ArrayList<DetilMutasi>> response) {
                 if (response.isSuccessful()){
                     _data.setValue(response.body());
-                    Log.d("detil", "onResponse: "+response.body());
-                    _loading.setValue(false);
                 }
+                _loading.setValue(false);
             }
 
             @Override
             public void onFailure(Call<ArrayList<DetilMutasi>> call, Throwable t) {
-
+                _pesanError.setValue(t.getMessage());
             }
         });
     }

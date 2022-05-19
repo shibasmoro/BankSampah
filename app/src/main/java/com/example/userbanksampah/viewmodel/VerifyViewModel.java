@@ -12,7 +12,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VerifyViewModel extends ViewModel {
-    private static final String TAG = "VerifyViewModel";
+
 
     private Pengajuan pengajuan = new Pengajuan();
 
@@ -21,6 +21,9 @@ public class VerifyViewModel extends ViewModel {
 
     private final MutableLiveData<String> _pesan = new MutableLiveData<>();
     public  LiveData<String> pesan= _pesan;
+
+    private final MutableLiveData<String> _pesanEror = new MutableLiveData<>();
+    public  LiveData<String> pesanEror= _pesanEror;
 
     public void getMaxTransaction(String id){
        RetrofitImpl.loginrequest().your_minimum(id).enqueue(new Callback<Pengajuan>() {
@@ -32,13 +35,11 @@ public class VerifyViewModel extends ViewModel {
                    minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
                }
 
-
-
            }
 
            @Override
            public void onFailure(Call<Pengajuan> call, Throwable t) {
-
+            _pesanEror.setValue("Tedapat Kesalahan pada sistem");
            }
        });
     }
@@ -46,14 +47,14 @@ public class VerifyViewModel extends ViewModel {
         RetrofitImpl.show_saldo().addPengajuan(id_pengajuan,id_nasabah,jumlah_ajuna,tanggal_ajuan).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful() && response.body() != null){
                     _pesan.setValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                _pesanEror.setValue("Tedapat Kesalahan pada sistem");
             }
         });
     }

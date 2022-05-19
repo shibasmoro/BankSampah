@@ -24,6 +24,9 @@ public interface RetrofitConfig {
     @GET("get_saldo.php")
     Call<Integer> your_saldo(@Query("id_nasabah") String id);
 
+    @GET("check_insert_pengajuan_nasabah.php")
+    Call<Integer> check_ajuan (@Query("param") String id);
+
     @GET("get_minimum.php")
     Call<Pengajuan> your_minimum(@Query("id_nasabah")String id);
 

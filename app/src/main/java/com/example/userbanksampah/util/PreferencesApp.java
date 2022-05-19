@@ -1,14 +1,11 @@
 package com.example.userbanksampah.util;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PreferencesApp {
-
-        private static Context context;
-
         public static SharedPreferences preferences;
-
         public static final String Id = "id";
         public static final String Nama = "nama";
         public static final String Alamat = "alamat";
@@ -16,8 +13,7 @@ public class PreferencesApp {
         public final static String PREFS_NAME = "Mypref";
 
     public PreferencesApp(Context context) {
-            this.context = context;
-            this.preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            preferences =  context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         }
 
         public static void setInt(String key, int value) {
@@ -29,7 +25,7 @@ public class PreferencesApp {
 
         public static int getInt(String key) {
             SharedPreferences prefs =preferences;
-            return prefs.getInt(key, 4);
+            return prefs.getInt(key, 0);
         }
 
         public static void setStr(String key, String value) {
@@ -54,7 +50,5 @@ public class PreferencesApp {
         public static boolean getBool(String key) {
             SharedPreferences prefs = preferences;
             return prefs.getBoolean(key, false);
-
-
         }
 }

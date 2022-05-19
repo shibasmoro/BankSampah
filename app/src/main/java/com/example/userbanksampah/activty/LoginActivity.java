@@ -19,8 +19,6 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +32,23 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel.nasabah.observe(this, adata -> {
             if (adata.getNama().equals("eror")) {
-                Toast.makeText(getApplicationContext(), "Username dan Password Tidak Sesuai", Toast.LENGTH_SHORT).show();
+                showToast("Username dan Password tidak sesuai");
             } else {
+
+                showToast("login Berhasil");
                 Move_To_Home(adata);
             }
 
-        });
-        loginViewModel.message.observe(this,adata->{
-           if (adata.isEmpty() == false){
-               Toast.makeText(getApplicationContext(), adata, Toast.LENGTH_SHORT).show();
-           }
 
         });
+        loginViewModel.message.observe(this, adata -> {
+            if (!adata.isEmpty()) {
+                Toast.makeText(getApplicationContext(), adata, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        loginViewModel.loading.observe(this,data->showLoading(data));
     }
 
     public void login(View view) {
@@ -55,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public boolean is_empty(TextView data1, TextView data2) {
-
         boolean param = false;
         if (data1.getText().toString().isEmpty()) {
             data1.setError("Harap Masukan Username");
@@ -65,17 +67,27 @@ public class LoginActivity extends AppCompatActivity {
             data2.setError("Harap Masukan Password");
             param = true;
         }
-
         return param;
     }
 
     public void Move_To_Home(Nasabah nasabah) {
-        PreferencesApp data = new PreferencesApp(this);
+        // PreferencesApp data = new PreferencesApp(this);
         PreferencesApp.setStr(PreferencesApp.Id, nasabah.getId_nasabah());
         PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
         PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());
         PreferencesApp.setInt(PreferencesApp.Kode, 1);
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+    }
+
+    public void showLoading(Boolean isLoad){
+        if (isLoad){
+            binding.progressBar.setVisibility(View.VISIBLE);
+        }else{
+            binding.progressBar.setVisibility(View.GONE);
+        }
+    }
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }
