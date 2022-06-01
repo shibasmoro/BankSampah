@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.userbanksampah.activty.DetilMutasiActivity;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.databinding.ItemMutasiBinding;
+import com.example.userbanksampah.util.Tanggal;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -19,8 +21,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
-    private Context context;
-    private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+    private final Context context;
+    //private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
     private SimpleDateFormat dateFormatter1 = new SimpleDateFormat("yyyy-MMM-dd");
 
     private final ArrayList<Mutasi> dataMutasi = new ArrayList<>();
@@ -68,7 +70,7 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
         public void showdata(Mutasi data) {
             tanggalLong = dateToMilis(data.getTanggal());
             tanngaldate = longToDate(tanggalLong);
-            binding.tvtanggal.setText(dateFormatter1.format(tanngaldate));
+            binding.tvtanggal.setText(Tanggal.dateFormatLocal1.format(tanngaldate));
             binding.etHarga.setText("Rp. " + formatter.format(data.getHarga()));
             binding.admin.setText(data.getNama_admin());
         }
@@ -78,7 +80,7 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
         private Long dateToMilis(String data) {
             Calendar calendar  =Calendar.getInstance();
             try {
-                Date date =dateFormatter.parse(data);
+                Date date = Tanggal.dateFormat.parse(data);
                 calendar.setTime(date);
 
             } catch (Exception e) {

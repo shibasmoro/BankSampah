@@ -18,6 +18,7 @@ public class PengajuanActivity extends AppCompatActivity {
     private VerifyViewModel model;
     private String id_param;
     private ActivityVerifyBinding binding;
+    private int yourSaldo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +30,23 @@ public class PengajuanActivity extends AppCompatActivity {
         id_param = PreferencesApp.getStr(PreferencesApp.Id);
 
         model = new ViewModelProvider(this).get(VerifyViewModel.class);
-        model.getMaxTransaction(id_param);
+        model.getSaldo(id_param);
+        model.saldo.observe(this,saldo->{
+            this.yourSaldo =saldo;
+        });
 
-        model._minimal.observe(this, data -> {
-            if (data <= 1000) {
-                binding.verifikasi.setEnabled(false);
-                binding.textView.setText(getString(R.string.saldo_kurang));
-            } else {
-                binding.textView.setText(getString(R.string.format_angka, FormatAngka.format(data)));
+
+        binding.verifikasi.setOnClickListener(view -> {
+            String nominal = binding.nama.getText().toString();
+            if (Integer.parseInt(nominal) > this.yourSaldo ){
+                showToast("Saldo anda tidak mencukupi");
+            }else{
+                model.addPengajuan("1000", id_param, Integer.parseInt(nominal), Tanggal.getCurrentDate());
             }
 
         });
 
-        binding.verifikasi.setOnClickListener(view -> {
-            String nominal = binding.nama.getText().toString();
-            model.addPengajuan("421", id_param, Integer.parseInt(nominal), Tanggal.getCurrentDate());
-        });
+
 
         model.pesan.observe(PengajuanActivity.this, data -> {
             showToast(data);

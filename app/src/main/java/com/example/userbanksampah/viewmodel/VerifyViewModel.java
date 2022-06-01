@@ -14,35 +14,16 @@ import retrofit2.Response;
 public class VerifyViewModel extends ViewModel {
 
 
-    private Pengajuan pengajuan = new Pengajuan();
-
-    private final MutableLiveData<Integer> minimal = new MutableLiveData<>();
-    public  LiveData<Integer> _minimal = minimal;
-
     private final MutableLiveData<String> _pesan = new MutableLiveData<>();
     public  LiveData<String> pesan= _pesan;
 
     private final MutableLiveData<String> _pesanEror = new MutableLiveData<>();
     public  LiveData<String> pesanEror= _pesanEror;
 
-    public void getMaxTransaction(String id){
-       RetrofitImpl.loginrequest().your_minimum(id).enqueue(new Callback<Pengajuan>() {
-           @Override
-           public void onResponse(Call<Pengajuan> call, Response<Pengajuan> response) {
+    private final MutableLiveData<Integer> _saldo = new MutableLiveData<>();
+    public  LiveData<Integer> saldo= _saldo;
 
-               if (response.isSuccessful()){
-                   pengajuan = response.body();
-                   minimal.setValue(pengajuan.getSaldo() - ((pengajuan.getSaldo()*pengajuan.getPersen())/100));
-               }
 
-           }
-
-           @Override
-           public void onFailure(Call<Pengajuan> call, Throwable t) {
-            _pesanEror.setValue("Tedapat Kesalahan pada sistem");
-           }
-       });
-    }
     public void addPengajuan(String id_pengajuan,String id_nasabah,int jumlah_ajuna,String tanggal_ajuan){
         RetrofitImpl.show_saldo().addPengajuan(id_pengajuan,id_nasabah,jumlah_ajuna,tanggal_ajuan).enqueue(new Callback<String>() {
             @Override
@@ -54,6 +35,22 @@ public class VerifyViewModel extends ViewModel {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                _pesanEror.setValue("Tedapat Kesalahan pada sistem");
+            }
+        });
+    }
+
+    public void getSaldo(String id_nasabah){
+        RetrofitImpl.show_saldo().your_minimum(id_nasabah).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if (response.isSuccessful()){
+                    _saldo.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
                 _pesanEror.setValue("Tedapat Kesalahan pada sistem");
             }
         });

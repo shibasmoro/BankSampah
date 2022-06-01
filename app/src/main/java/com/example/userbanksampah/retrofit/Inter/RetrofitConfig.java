@@ -28,7 +28,7 @@ public interface RetrofitConfig {
     Call<Integer> check_ajuan (@Query("param") String id);
 
     @GET("get_minimum.php")
-    Call<Pengajuan> your_minimum(@Query("id_nasabah")String id);
+    Call<Integer> your_minimum(@Query("id_nasabah")String id);
 
     @GET("get_mutasi.php")
     Call<ArrayList<Mutasi>> mutasi(@Query("tanggal_awal")String tanggalAwal ,@Query("tanggal_akhir") String tanngalAkhir, @Query("id_nasabah") String id_nasabah  );
