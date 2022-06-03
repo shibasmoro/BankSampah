@@ -62,4 +62,5 @@ public class DetilMutasiAdapter extends RecyclerView.Adapter<DetilMutasiAdapter.
             this.binding = data;
         }
     }
+
 }
