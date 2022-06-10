@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Userbanksampah" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/buttontext</item>
-        <item name="colorPrimaryVariant">@color/buttontext</item>
-        <item name="colorOnPrimary">@color/buttontext</item>
+        <item name="colorPrimary">@color/Green</item>
+        <item name="colorPrimaryVariant">@color/Green</item>
+        <item name="colorOnPrimary">@color/Green</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

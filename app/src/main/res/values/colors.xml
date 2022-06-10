@@ -12,5 +12,9 @@
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
     <color name="falses">#DC143C</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#6067b3</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="Green">#56983D</color>
+    <color name="Gray">#808080</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#56983D</color>
 </resources>

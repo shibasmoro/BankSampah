@@ -10,18 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.userbanksampah.R;
-import com.example.userbanksampah.adapter.KategoriSampahAdapter;
-import com.example.userbanksampah.adapter.SampahAdapter;
 import com.example.userbanksampah.databinding.ActivityHomeBinding;
-import com.example.userbanksampah.model.KategoriSampah;
-import com.example.userbanksampah.model.Sampah;
 import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.util.PreferencesApp;
 import com.example.userbanksampah.viewmodel.HomeviewModel;
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding Binding;
@@ -71,12 +65,12 @@ public class HomeActivity extends AppCompatActivity {
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
         // observe data kategori sampah
-        model.dataKategori.observe(this, this::setKategoriSampah);
+        //model.dataKategori.observe(this, this::setKategoriSampah);
         model.pesanError.observe(this,data->showToast(data));
     }
 
-    /*
-    public void logout(View view) {
+
+    /*public void logout(View view) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(LoginActivity.Id,"Kosong");
         editor.putString(LoginActivity.Nama,"Kosong");
@@ -85,10 +79,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(HomeActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();
-    }
-     */
+    }*/
 
-   private void setKategoriSampah(ArrayList<KategoriSampah> dataKategori){
+
+ /*  private void setKategoriSampah(ArrayList<KategoriSampah> dataKategori){
        KategoriSampahAdapter adapter = new KategoriSampahAdapter();
        adapter.setData(dataKategori);
        Binding.rv1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -100,12 +94,12 @@ public class HomeActivity extends AppCompatActivity {
         model.getSampah(sampah.getId());
         model.dataSampah.observe(this,dataSampah-> showDataSampah(dataSampah));
    }
-   private void showDataSampah(ArrayList<Sampah> data){
+  private void showDataSampah(ArrayList<Sampah> data){
        SampahAdapter adapter = new SampahAdapter();
        adapter.setDataSampah(data);
        Binding.rv2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
        Binding.rv2.setAdapter(adapter);
-   }
+   }*/
 
     public void showLoading(Boolean isLoad){
         if (isLoad){

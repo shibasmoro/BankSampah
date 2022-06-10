@@ -30,25 +30,29 @@
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/outline_lock_24.xml" value="0.1175" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/shapebg.xml" value="0.2111111111111111" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/shapebutton.xml" value="0.20462962962962963" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/shapegreen.xml" value="0.101" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/shapeoutline.xml" value="0.1555" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/static_rv_bg.xml" value="0.1805" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/static_rv_item.xml" value="0.1805" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/static_rv_selected.xml" value="0.15" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/drawable/strokegreen.xml" value="0.101" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/font/poppins.xml" value="0.20462962962962963" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/font/poppins_bold.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/font/poppins_light.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/font/poppins_semibold.xml" value="0.14010416666666667" />
-        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_history.xml" value="0.25" />
-        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_home.xml" value="0.22" />
-        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_detil_mutasi.xml" value="0.22" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_history.xml" value="0.22" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_home.xml" value="0.16" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_onboarding.xml" value="0.1" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_splashscreen.xml" value="0.11041666666666666" />
-        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_verify.xml" value="0.25" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/activity_verify.xml" value="0.2" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/detail_item_sampah.xml" value="0.22" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/dynamic_rv_item.xml" value="0.22" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/dynamic_rv_progressbar.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/item_mutasi.xml" value="0.33" />
+        <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/item_mutasi.xml" value="0.25" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/login_tab_fragment.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/login_tag_fragment.xml" value="0.25" />
         <entry key="..\:/Users/phaks/AndroidStudioProjects/Userbanksampah/app/src/main/res/layout/shapebutton.xml" value="0.18426678067550234" />

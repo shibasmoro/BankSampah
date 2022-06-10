@@ -1,24 +1,21 @@
 package com.example.userbanksampah.activty;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.userbanksampah.R;
 import com.example.userbanksampah.adapter.DetilMutasiAdapter;
-
 import com.example.userbanksampah.databinding.ActivityDetilMutasiBinding;
 import com.example.userbanksampah.model.DetilMutasi;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.viewmodel.DetilMutasimodel;
-
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,8 +27,8 @@ public class DetilMutasiActivity extends AppCompatActivity {
     private DetilMutasimodel model;
     private Mutasi mutasi;
     private long tanggalLong;
-    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-    private final SimpleDateFormat dateFormatter1 = new SimpleDateFormat("yyyy-MMM-dd");
+    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd - MM - yyyy");
+    private final SimpleDateFormat dateFormatter1 = new SimpleDateFormat("dd - MMMM - yyyy");
 
 
     @Override

@@ -37,5 +37,22 @@
     <string name="bobots">bobot</string>
     <string name="saldo_kurang">Maaf Saldo anda tidak cukup</string>
     <string name="gak_bisa_ajuan">Maaf anda belum bisa mengajukan penarikan jumlah transaksi anda kurang dari 3</string>
+    <string name="aryaa">Arya Enrico</string>
+    <string name="admin">Admin</string>
+    <string name="tanggal_awal">Tanggal Awal</string>
+    <string name="cek_transaksi">Cek Transaksi</string>
+    <string name="tanggal_akhir">Tanggal Akhir</string>
+    <string name="total_setor">Total Setor</string>
+    <string name="total_rp_30_000">Total: Rp.30,000</string>
+    <string name="tanggaltvv">Tanggal</string>
+    <string name="phaksi_bangun_asmoro">Phaksi Bangun Asmoro</string>
+    <string name="riwayat_transaksi">Riwayat Transaksi</string>
+    <string name="tanggaldetail">Tanggal</string>
+    <string name="nama_admin">Nama Admin</string>
+    <string name="ajukan">Ajukan</string>
+    <string name="total_saldo">Total Saldo</string>
+    <string name="pengajuan_penarikan">Pengajuan Penarikan</string>
+    <string name="mutasi_transaksi">Mutasi Transaksi</string>
+    <string name="mutasi_pengajuan">Mutasi Pengajuan</string>
 
 </resources>

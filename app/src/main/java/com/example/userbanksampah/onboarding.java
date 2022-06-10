@@ -7,12 +7,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.userbanksampah.activty.LoginActivity;
+import com.example.userbanksampah.adapter.ViewPageAdapter;
 import com.example.userbanksampah.databinding.ActivityOnboardingBinding;
 import com.example.userbanksampah.util.PreferencesApp;
 

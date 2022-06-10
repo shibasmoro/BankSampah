@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgdashboard"
     android:orientation="vertical"
     tools:context=".activty.HomeActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="30dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/poppins"
             android:text="@string/welcome"
             android:textColor="@color/white"
             android:textSize="12sp"
@@ -64,161 +59,117 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="40dp"
-            app:civ_border_width="2dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical"
+            android:src="@drawable/profile"
             app:civ_border_color="@color/white"
-            android:orientation="vertical"
+            app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/profile"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="300dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/card_view"
-            android:orientation="vertical"
-            app:cardCornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/total_saldo"
+            android:textColor="@color/white"
+            android:layout_marginTop="60dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+            app:layout_constraintTop_toBottomOf="@+id/circleImageView">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="35dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="@string/saldo"
-                android:textColor="@color/white"
-                android:textSize="18sp">
+        </TextView>
 
-            </TextView>
+    <TextView
+        android:id="@+id/saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/uang"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
 
-            <TextView
-                android:id="@+id/saldo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppins_light"
-                android:text="@string/uang"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-               ></TextView>
-        </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <LinearLayout
-            android:id="@+id/cardview1"
-            android:layout_width="330dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="horizontal"
+        <ImageView
+            android:id="@+id/pengajuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/buttonhistory"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toTopOf="@+id/history" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="155dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@color/white"
+        <TextView
+            android:id="@+id/tvPengajuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/mutasi_transaksi"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/history"
+            app:layout_constraintStart_toStartOf="@+id/history"
+            app:layout_constraintTop_toBottomOf="@+id/history" />
 
-                android:elevation="2dp"
-                app:cardCornerRadius="20dp">
+        <ImageView
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:src="@drawable/buttonhistory"
+            app:layout_constraintEnd_toStartOf="@+id/pengajuan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/history"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/history"></ImageView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:textSize="12sp"
-                        android:layout_marginTop="23dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="@string/History"
-                        android:textColor="@color/buttontext"></TextView>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="155dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:elevation="30dp"
-                app:cardCornerRadius="20dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/pengajuan"
-                        android:layout_width="37dp"
-                        android:layout_height="32dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:src="@drawable/verif"></ImageView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:textSize="12sp"
-                        android:layout_marginTop="23dp"
-                        android:fontFamily="@font/poppins_light"
-                        android:text="@string/verify"
-                        android:textColor="@color/buttontext"></TextView>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvMutasiTransaksi"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/pengajuan_penarikan"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/pengajuan"
+            app:layout_constraintStart_toStartOf="@+id/pengajuan"
+            app:layout_constraintTop_toBottomOf="@+id/history" />
 
 
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+        <ImageView
+            android:id="@+id/historyPenarikan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/buttonhistory"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardview1">
+            app:layout_constraintStart_toEndOf="@+id/pengajuan"
+            app:layout_constraintTop_toTopOf="@+id/pengajuan" />
 
-        </androidx.recyclerview.widget.RecyclerView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_2"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_1">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <TextView
+            android:id="@+id/tvHistoryPenarikan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/mutasi_pengajuan"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/historyPenarikan"
+            app:layout_constraintStart_toStartOf="@+id/historyPenarikan"
+            app:layout_constraintTop_toBottomOf="@+id/history" />
 
 
-</ScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
