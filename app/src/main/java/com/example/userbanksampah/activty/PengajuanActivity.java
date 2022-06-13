@@ -41,7 +41,7 @@ public class PengajuanActivity extends AppCompatActivity {
             if (Integer.parseInt(nominal) > this.yourSaldo ){
                 showToast("Saldo anda tidak mencukupi");
             }else{
-                model.addPengajuan("1000", id_param, Integer.parseInt(nominal), Tanggal.getCurrentDate());
+                model.addPengajuan(Tanggal.epochTime(), id_param, Integer.parseInt(nominal), Tanggal.getCurrentDate());
             }
 
         });

@@ -13,4 +13,7 @@ public class Tanggal {
     public static String getCurrentDate(){
         return dateFormat.format(date);
     }
+    public static String epochTime(){
+        return String.valueOf(System.currentTimeMillis());
+    }
 }
