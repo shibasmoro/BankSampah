@@ -34,7 +34,7 @@
         app:startIconTint="@color/Green">
 
         <EditText
-            android:id="@+id/nama"
+            android:id="@+id/jumlahAjuan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"

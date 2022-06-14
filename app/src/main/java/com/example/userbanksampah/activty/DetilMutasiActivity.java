@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.userbanksampah.R;
 import com.example.userbanksampah.adapter.DetilMutasiAdapter;
 import com.example.userbanksampah.databinding.ActivityDetilMutasiBinding;
 import com.example.userbanksampah.model.DetilMutasi;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.util.FormatAngka;
+import com.example.userbanksampah.util.Tanggal;
 import com.example.userbanksampah.viewmodel.DetilMutasimodel;
 
 import java.text.SimpleDateFormat;
@@ -27,8 +27,8 @@ public class DetilMutasiActivity extends AppCompatActivity {
     private DetilMutasimodel model;
     private Mutasi mutasi;
     private long tanggalLong;
-    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd - MM - yyyy");
-    private final SimpleDateFormat dateFormatter1 = new SimpleDateFormat("dd - MMMM - yyyy");
+//    private final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd - MM - yyyy");
+//    private final SimpleDateFormat dateFormatter1 = new SimpleDateFormat("dd - MMMM - yyyy");
 
 
     @Override
@@ -40,9 +40,7 @@ public class DetilMutasiActivity extends AppCompatActivity {
 
         model = new ViewModelProvider(this).get(DetilMutasimodel.class);
 
-
         model.getDetilMutasi(mutasi.getId_setor());
-
         model.loading.observe(this,loading->showLoading(loading));
         model.pesanEror.observe(this,pesanEror->showToast(pesanEror));
         model.data.observe(DetilMutasiActivity.this,response->{
@@ -57,11 +55,10 @@ public class DetilMutasiActivity extends AppCompatActivity {
 
             }
         });
-
         tanggalLong =dateToMilis(mutasi.getTanggal());
-        Binding.namaPengaju.setText(mutasi.getNama_nasabah());
-        Binding.total.setText(getString(R.string.format_angka,FormatAngka.format(mutasi.getHarga())));
-        Binding.tanggalTransaksi.setText(dateFormatter1.format(longToDate(tanggalLong)));
+        Binding.namaPengaju.setText(mutasi.getNama_admin());
+        Binding.total.setText(FormatAngka.format(mutasi.getHarga()));
+        Binding.tanggalTransaksi.setText(Tanggal.dateFormatLocal.format(longToDate(tanggalLong)));
 
     }
 
@@ -86,7 +83,7 @@ public class DetilMutasiActivity extends AppCompatActivity {
     private Long dateToMilis(String data) {
         Calendar calendar  =Calendar.getInstance();
         try {
-            Date date =dateFormatter.parse(data);
+            Date date = Tanggal.dateFormat.parse(data);
             calendar.setTime(date);
 
         } catch (Exception e) {

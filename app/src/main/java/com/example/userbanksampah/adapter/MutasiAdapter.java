@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.userbanksampah.activty.DetilMutasiActivity;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.databinding.ItemMutasiBinding;
+import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.util.Tanggal;
 
 import java.text.DecimalFormat;
@@ -26,8 +27,6 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
     private SimpleDateFormat dateFormatter1 = new SimpleDateFormat("yyyy-MMM-dd");
 
     private final ArrayList<Mutasi> dataMutasi = new ArrayList<>();
-    NumberFormat formatter = new DecimalFormat("#,###.##");
-
     public MutasiAdapter( Context context,ArrayList<Mutasi> data) {
         dataMutasi.clear();
         dataMutasi.addAll(data);
@@ -40,6 +39,7 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
         ItemMutasiBinding binding = ItemMutasiBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new Holder(binding);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull MutasiAdapter.Holder holder, int position) {
@@ -71,7 +71,7 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
             tanggalLong = dateToMilis(data.getTanggal());
             tanngaldate = longToDate(tanggalLong);
             binding.tvtanggal.setText(Tanggal.dateFormatLocal1.format(tanngaldate));
-            binding.etHarga.setText("Rp. " + formatter.format(data.getHarga()));
+            binding.etHarga.setText(FormatAngka.format(data.getHarga()));
             binding.admin.setText(data.getNama_admin());
         }
 

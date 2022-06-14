@@ -3,25 +3,25 @@ package com.example.userbanksampah.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.userbanksampah.R;
 import com.example.userbanksampah.databinding.DetailItemSampahBinding;
-import com.example.userbanksampah.databinding.ItemMutasiBinding;
 import com.example.userbanksampah.model.DetilMutasi;
 import com.example.userbanksampah.util.FormatAngka;
+import com.example.userbanksampah.util.Tanggal;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DetilMutasiAdapter extends RecyclerView.Adapter<DetilMutasiAdapter.Holder> {
 
     private ArrayList<DetilMutasi> detilMutasi = new ArrayList<>();
     private Context context;
-
 
     public DetilMutasiAdapter(Context context, ArrayList<DetilMutasi> data) {
         this.detilMutasi.clear();
@@ -40,7 +40,7 @@ public class DetilMutasiAdapter extends RecyclerView.Adapter<DetilMutasiAdapter.
     public void onBindViewHolder(@NonNull DetilMutasiAdapter.Holder holder, int position) {
         DetilMutasi detil = detilMutasi.get(position);
         holder.binding.namaSampah.setText(detil.getSampah());
-        holder.binding.jumlahPengaju.setText(holder.itemView.getContext().getString(R.string.format_angka, FormatAngka.format(detil.getHarga())));
+        holder.binding.jumlahPengaju.setText(FormatAngka.format(detil.getHarga()));
         if (detil.getSampah().equals("Minyak")){
             holder.binding.bobotPengajuan.setText(holder.itemView.getContext().getString(R.string.bobot_detail2,String.valueOf(detil.getTotal())));
         }else{
@@ -61,6 +61,30 @@ public class DetilMutasiAdapter extends RecyclerView.Adapter<DetilMutasiAdapter.
             super(data.getRoot());
             this.binding = data;
         }
+    }
+    private Long dateToMilis(String data) {
+        Calendar calendar  =Calendar.getInstance();
+        try {
+            Date date = Tanggal.dateFormat.parse(data);
+            calendar.setTime(date);
+
+        } catch (Exception e) {
+            showToast(e.getMessage());
+        }
+
+        return calendar.getTimeInMillis();
+    }
+
+    private Date longToDate(long data) {
+        Date date;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(data);
+        date = calendar.getTime();
+        return date;
+
+    }
+    public void showToast(String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        //PreferencesApp pref = new PreferencesApp(this);
+        PreferencesApp pref = new PreferencesApp(this);
 
         Binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(Binding.getRoot());
@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // medapat saldo saat ini
-        model.data.observe(this, data -> Binding.saldo.setText(getString(R.string.format_angka,FormatAngka.format(data))));
+        model.data.observe(this, data -> Binding.saldo.setText(FormatAngka.format(data)));
 
 
         // mendapatkan semua kategori sampah yang ada

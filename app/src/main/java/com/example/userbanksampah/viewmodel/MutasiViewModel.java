@@ -39,7 +39,6 @@ public class MutasiViewModel extends ViewModel {
     public LiveData<DetilMutasi> transaction =_transaction;
 
     public LiveData<Date> getTanggalAwal(){
-
         Calendar calendar =  Calendar.getInstance();
         calendar.get(Calendar.YEAR);
         calendar.set(Calendar.MONTH,0);
@@ -57,9 +56,7 @@ public class MutasiViewModel extends ViewModel {
         Date date = calendar.getTime();
         _dataTanggalAkhir.setValue(date);
         return dataTanggalAkhir;
-
     }
-
 
     public void getData(String awal,String akhir,String id){
         _loading.setValue(true);
