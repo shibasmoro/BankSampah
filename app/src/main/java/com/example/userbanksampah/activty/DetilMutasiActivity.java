@@ -57,7 +57,7 @@ public class DetilMutasiActivity extends AppCompatActivity {
         });
         tanggalLong =dateToMilis(mutasi.getTanggal());
         Binding.namaPengaju.setText(mutasi.getNama_admin());
-        Binding.total.setText(FormatAngka.format(mutasi.getHarga()));
+        Binding.total.setText(FormatAngka.token(FormatAngka.format(mutasi.getHarga())));
         Binding.tanggalTransaksi.setText(Tanggal.dateFormatLocal.format(longToDate(tanggalLong)));
 
     }

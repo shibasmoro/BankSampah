@@ -19,7 +19,7 @@ import retrofit2.http.Query;
 public interface RetrofitConfig {
 
     @GET("login.php")
-    Call<Nasabah> validate_login(@Query("id_nasabah") String id, @Query("password") String password);
+    Call<Nasabah> validate_login(@Query("no_telepon") String id, @Query("password") String password);
 
     @GET("get_saldo.php")
     Call<Integer> your_saldo(@Query("id_nasabah") String id);
@@ -45,7 +45,6 @@ public interface RetrofitConfig {
     @FormUrlEncoded
     @POST(" insert_pengajuan_nasabah.php")
     Call<String> addPengajuan(
-            @Field("id") String id_ajuan,
             @Field("nasabah") String id_nasabah,
             @Field("jumlah") int jumlah,
             @Field("tanggal_ajuan") String tanggal

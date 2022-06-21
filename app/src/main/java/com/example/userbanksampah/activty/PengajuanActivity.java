@@ -48,7 +48,7 @@ public class PengajuanActivity extends AppCompatActivity {
                     binding.jumlahAjuan.removeTextChangedListener(this);
                     cleanString = data.replaceAll("[Rp. ]","");
                         if (!cleanString.isEmpty()){
-                            format=FormatAngka.format(Double.parseDouble(cleanString));
+                            format=FormatAngka.token(FormatAngka.format(Double.parseDouble(cleanString)));
                             current =format;
                             binding.jumlahAjuan.setText(format);
                         }else{
@@ -73,7 +73,8 @@ public class PengajuanActivity extends AppCompatActivity {
                 if (Integer.parseInt(cleanString) > this.yourSaldo){
                     showToast("Saldo Anda Tidak mencukupi");
                 }else{
-                    model.addPengajuan(Tanggal.epochTime(), id_param, Integer.parseInt(cleanString), Tanggal.getCurrentDate());
+                    //showToast(cleanString);
+                    model.addPengajuan( id_param, Integer.parseInt(cleanString), Tanggal.getCurrentDate());
                 }
             }
         });

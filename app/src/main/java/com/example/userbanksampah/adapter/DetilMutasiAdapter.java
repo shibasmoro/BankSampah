@@ -40,7 +40,7 @@ public class DetilMutasiAdapter extends RecyclerView.Adapter<DetilMutasiAdapter.
     public void onBindViewHolder(@NonNull DetilMutasiAdapter.Holder holder, int position) {
         DetilMutasi detil = detilMutasi.get(position);
         holder.binding.namaSampah.setText(detil.getSampah());
-        holder.binding.jumlahPengaju.setText(FormatAngka.format(detil.getHarga()));
+        holder.binding.jumlahPengaju.setText(FormatAngka.token(FormatAngka.format(detil.getHarga())));
         if (detil.getSampah().equals("Minyak")){
             holder.binding.bobotPengajuan.setText(holder.itemView.getContext().getString(R.string.bobot_detail2,String.valueOf(detil.getTotal())));
         }else{

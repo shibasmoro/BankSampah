@@ -1,7 +1,10 @@
 package com.example.userbanksampah.activty;
 
 
+import static com.example.userbanksampah.util.PreferencesApp.preferences;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -11,11 +14,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.userbanksampah.R;
 import com.example.userbanksampah.databinding.ActivityHomeBinding;
 import com.example.userbanksampah.util.FormatAngka;
 import com.example.userbanksampah.util.PreferencesApp;
 import com.example.userbanksampah.viewmodel.HomeviewModel;
+
+import java.util.StringTokenizer;
 
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding Binding;
@@ -35,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         Binding.nama.setText(PreferencesApp.getStr(PreferencesApp.Nama));
 
         model.getSaldo(PreferencesApp.getStr(PreferencesApp.Id));
-        model.validasiAjuan(PreferencesApp.getStr(PreferencesApp.Id));
+        //model.validasiAjuan(PreferencesApp.getStr(PreferencesApp.Id));
 
         model.loading.observe(this,data->{
             showLoading(data);
@@ -46,60 +50,31 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
+
         // medapat saldo saat ini
-        model.data.observe(this, data -> Binding.saldo.setText(FormatAngka.format(data)));
-
-
-        // mendapatkan semua kategori sampah yang ada
-        model.getKategori();
-
-        Binding.pengajuan.setOnClickListener(view ->
-                model.checkAjuan.observe(this,dataAjuan->{
-                    if (dataAjuan >=3){
-                        startActivity(new Intent(HomeActivity.this, com.example.userbanksampah.activty.PengajuanActivity.class));
-                    }else{
-                        showToast(getString(R.string.gak_bisa_ajuan));
-                    }
-                }));
+      model.data.observe(this,data->{
+          Binding.saldo.setText(token(FormatAngka.format(data)));
+      });
 
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
-        // observe data kategori sampah
-        //model.dataKategori.observe(this, this::setKategoriSampah);
+
         model.pesanError.observe(this,data->showToast(data));
+        Binding.historyPenarikan.setOnClickListener(view -> logout());
     }
 
 
-    /*public void logout(View view) {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(LoginActivity.Id,"Kosong");
-        editor.putString(LoginActivity.Nama,"Kosong");
-        editor.putString(LoginActivity.Alamat,"Kosong");
-        editor.commit();
+    public void logout() {
+        PreferencesApp.setStr(PreferencesApp.Id, "Kosong");
+        PreferencesApp.setStr(PreferencesApp.Nama, "Kosong");
+        PreferencesApp.setStr(PreferencesApp.Alamat, "Kosong");
+        PreferencesApp.setInt(PreferencesApp.Kode, 1);
         startActivity(new Intent(HomeActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();
-    }*/
+    }
 
-
- /*  private void setKategoriSampah(ArrayList<KategoriSampah> dataKategori){
-       KategoriSampahAdapter adapter = new KategoriSampahAdapter();
-       adapter.setData(dataKategori);
-       Binding.rv1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-       Binding.rv1.setAdapter(adapter);
-       adapter.setItemClick(this::setSampah);
-   }
-
-   private void setSampah(KategoriSampah sampah){
-        model.getSampah(sampah.getId());
-        model.dataSampah.observe(this,dataSampah-> showDataSampah(dataSampah));
-   }
-  private void showDataSampah(ArrayList<Sampah> data){
-       SampahAdapter adapter = new SampahAdapter();
-       adapter.setDataSampah(data);
-       Binding.rv2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-       Binding.rv2.setAdapter(adapter);
-   }*/
 
     public void showLoading(Boolean isLoad){
         if (isLoad){
@@ -111,6 +86,12 @@ public class HomeActivity extends AppCompatActivity {
 
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private String token (String data){
+        StringTokenizer tokenizer = new StringTokenizer(data,",");
+        return  tokenizer.nextToken();
+
     }
 
 }

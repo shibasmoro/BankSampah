@@ -71,7 +71,7 @@ public class MutasiAdapter extends RecyclerView.Adapter<MutasiAdapter.Holder> {
             tanggalLong = dateToMilis(data.getTanggal());
             tanngaldate = longToDate(tanggalLong);
             binding.tvtanggal.setText(Tanggal.dateFormatLocal1.format(tanngaldate));
-            binding.etHarga.setText(FormatAngka.format(data.getHarga()));
+            binding.etHarga.setText(FormatAngka.token(FormatAngka.format(data.getHarga())));
             binding.admin.setText(data.getNama_admin());
         }
 

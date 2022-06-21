@@ -9,6 +9,18 @@ public class Nasabah {
     private String alamat;
     @SerializedName("nama")
     private String nama;
+    @SerializedName("no_telepon")
+    private String no_telepon;
+    @SerializedName("message")
+    private String pesan ="";
+
+    public String getPesan() {
+        return pesan;
+    }
+
+    public String getNo_telepon() {
+        return no_telepon;
+    }
 
     public String getId_nasabah() {
 

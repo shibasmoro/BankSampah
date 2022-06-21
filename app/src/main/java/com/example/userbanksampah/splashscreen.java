@@ -19,20 +19,24 @@ public class splashscreen extends AppCompatActivity {
 
         PreferencesApp pref = new PreferencesApp(this);
 
-        if (!PreferencesApp.getStr(PreferencesApp.Id).equals("Kosong")) {
-            Intent data = new Intent(splashscreen.this, HomeActivity.class);
-            data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(data);
-        } else if (PreferencesApp.getInt(PreferencesApp.Kode) == 2) {
-            Intent data = new Intent(splashscreen.this, LoginActivity.class);
-            data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(data);
-        } else {
+
             final Handler handler = new Handler();
             handler.postDelayed(() -> {
-                startActivity(new Intent(getApplicationContext(), onboarding.class));
+
+                if (!PreferencesApp.getStr(PreferencesApp.Id).equals("Kosong")) {
+                    Intent data = new Intent(splashscreen.this, HomeActivity.class);
+                    data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(data);
+                } else if (PreferencesApp.getInt(PreferencesApp.Kode) == 2) {
+                    Intent data = new Intent(splashscreen.this, LoginActivity.class);
+                    data.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    data.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(data);
+                }else{
+                    startActivity(new Intent(getApplicationContext(), onboarding.class));
+                }
+
                 finish();
             }, 1000L);
         }
@@ -41,4 +45,3 @@ public class splashscreen extends AppCompatActivity {
     }
 
 
-}

@@ -31,10 +31,9 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         loginViewModel.nasabah.observe(this, adata -> {
-            if (adata.getNama().equals("eror")) {
-                showToast("Username dan Password tidak sesuai");
+            if (!adata.getPesan().isEmpty()) {
+                showToast(adata.getPesan());
             } else {
-
                 showToast("login Berhasil");
                 Move_To_Home(adata);
             }
@@ -75,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         PreferencesApp.setStr(PreferencesApp.Id, nasabah.getId_nasabah());
         PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
         PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());
-        PreferencesApp.setInt(PreferencesApp.Kode, 1);
+        PreferencesApp.setInt(PreferencesApp.Kode, 2);
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
