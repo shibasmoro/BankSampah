@@ -2,6 +2,7 @@ package com.example.userbanksampah.retrofit.Inter;
 
 import com.example.userbanksampah.model.DetilMutasi;
 import com.example.userbanksampah.model.KategoriSampah;
+import com.example.userbanksampah.model.Message;
 import com.example.userbanksampah.model.Mutasi;
 import com.example.userbanksampah.model.Nasabah;
 import com.example.userbanksampah.model.Pengajuan;
@@ -48,6 +49,15 @@ public interface RetrofitConfig {
             @Field("nasabah") String id_nasabah,
             @Field("jumlah") int jumlah,
             @Field("tanggal_ajuan") String tanggal
+    );
+
+    @FormUrlEncoded
+    @POST("insert_nasabah.php")
+    Call<Message> addUser(
+            @Field("nama")  String nama,
+            @Field("alamat")  String alamat,
+            @Field("password") String password,
+            @Field("no_telp")  String no_telp
     );
 
 }

@@ -1,10 +1,14 @@
 package com.example.userbanksampah.activty;
 
 
+import static com.example.userbanksampah.util.PreferencesApp.preferences;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
         PreferencesApp pref = new PreferencesApp(this);
@@ -46,8 +51,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
         Binding.circleImageView.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, ProfileActivity.class)));
+        Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
+
         // medapat saldo saat ini
       model.data.observe(this,data->{
           Binding.saldo.setText(token(FormatAngka.format(data)));
