@@ -17,10 +17,10 @@ public class ViewPageAdapter extends PagerAdapter {
     Context context;
 
     int[] images = {
-            R.drawable.onboarding,
-            R.drawable.onboarding2,
-            R.drawable.onboarding1,
-            R.drawable.loginpage1
+            R.drawable.ob1,
+            R.drawable.ob2,
+            R.drawable.ob3,
+            R.drawable.ob4
 
 
     };

@@ -78,7 +78,7 @@
             android:fontFamily="@font/poppins_light"
             android:text="@string/total_saldo"
             android:textColor="@color/white"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toBottomOf="@+id/circleImageView">

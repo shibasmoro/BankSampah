@@ -19,9 +19,10 @@
 
             <ImageView
                 android:id="@+id/imageregister"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/register1"
+                android:layout_centerHorizontal="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,10 +38,10 @@
                 android:layout_marginEnd="40dp"
                 android:hint="Full Name"
                 android:textColorHint="@color/buttontext"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeColor="@color/buttontext"
                 app:endIconDrawable="@drawable/outline_close_24"
                 app:endIconMode="clear_text"
@@ -61,8 +62,9 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/boxusername"
+                android:id="@+id/boxnumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
@@ -70,54 +72,19 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:hint="Username"
-                android:textColorHint="@color/buttontext"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
-                app:boxStrokeColor="@color/buttontext"
-                app:endIconDrawable="@drawable/outline_close_24"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/buttontext"
-                app:hintTextColor="@color/buttontext"
-                app:startIconDrawable="@drawable/outline_perm_identity_24"
-                app:startIconTint="@color/buttontext">
-
-                <EditText
-                    android:id="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
-                    android:textColor="@color/buttontext"
-                    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck">
-
-                </EditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/boxnumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_below="@+id/boxusername"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="40dp"
                 android:hint="Phone Number"
-                android:textColorHint="@color/buttontext"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
-                app:boxStrokeColor="@color/buttontext"
+                android:textColorHint="@color/Green"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/Green"
                 app:endIconDrawable="@drawable/outline_close_24"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/buttontext"
-                app:hintTextColor="@color/buttontext"
+                app:endIconTint="@color/Green"
+                app:hintTextColor="@color/Green"
                 app:startIconDrawable="@drawable/round_local_phone_24"
-                app:startIconTint="@color/buttontext">
+                app:startIconTint="@color/Green">
 
                 <EditText
                     android:id="@+id/number"
@@ -143,10 +110,10 @@
                 android:layout_marginEnd="40dp"
                 android:hint="Password"
                 android:textColorHint="@color/buttontext"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeColor="@color/buttontext"
                 app:helperText="Required"
                 app:helperTextTextColor="@color/buttontext"
@@ -163,7 +130,7 @@
                     android:fontFamily="@font/poppins_light"
                     android:inputType="textPassword"
                     android:textColor="@color/buttontext"
-                    tools:ignore="SpeakableTextPresentCheck"></EditText>
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -175,12 +142,12 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="40dp"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password"
                 android:textColorHint="@color/buttontext"
-                app:boxCornerRadiusBottomEnd="30dp"
-                app:boxCornerRadiusBottomStart="30dp"
-                app:boxCornerRadiusTopEnd="30dp"
-                app:boxCornerRadiusTopStart="30dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeColor="@color/buttontext"
                 app:helperText="Required"
                 app:helperTextTextColor="@color/buttontext"
@@ -197,7 +164,7 @@
                     android:fontFamily="@font/poppins_light"
                     android:inputType="textPassword"
                     android:textColor="@color/buttontext"
-                    tools:ignore="SpeakableTextPresentCheck"></EditText>
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

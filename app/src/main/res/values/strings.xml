@@ -21,10 +21,11 @@
     <string name="name">Phaksi Bangun Asmoro</string>
     <string name="verify"> Pengajuan Penarikan</string>
     <string name="heading_fourth">Tarik Saldo</string>
-    <string name="desc_one">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
-    <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
-    <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
-    <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_one"> Sampah apapun yang anda pungut bisa dijadikan uang</string>
+    <string name="desc_two">Setelah anda pungut dan kumpulkan, Lalu anda bisa menyetorkan di tempat pengumpulan sampah</string>
+    <string name="desc_three">Tunggu admin menimbang semua sampah yang telah anda setorkan</string>
+    <string name="desc_fourth">Selamat!!!
+Sampah tidak berguna yang anda telah kumpulkan telah berubah menjadi uang yang anda dapat tarik </string>
     <string name="loginpage">Use the application according to policy rules. Any kinds of violoations will be subject to sanctions.</string>
     <string name="logosplashscreen">Logo</string>
     <string name="nama">nama</string>
@@ -54,5 +55,15 @@
     <string name="pengajuan_penarikan">Pengajuan Penarikan</string>
     <string name="mutasi_transaksi">Mutasi Transaksi</string>
     <string name="mutasi_pengajuan">Mutasi Pengajuan</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="profile_page">Profile Page</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="_085770539399">085770539399</string>
+    <string name="logout1">Logout</string>
+    <string name="address">Address</string>
+    <string name="pondok_maharta_blok_a1_no_22">Pondok Maharta Blok A1 No 22</string>
+    <string name="password1">Password</string>
+    <string name="_123456">123456</string>
 
 </resources>
