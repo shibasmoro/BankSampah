@@ -1,104 +1,70 @@
 package com.example.userbanksampah.activty;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.example.userbanksampah.R;
+import com.example.userbanksampah.databinding.ActivityRegisterBinding;
+import com.example.userbanksampah.viewmodel.RegisterViewModel;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText NAMA, USERNAME, NUMBER, PASSWORD, p2;
-    private Button btnregist;
-    private final String link_regist = "https://ublmobilekmmi.web.id/public_html/bank_sampah/register.php";
+    private ActivityRegisterBinding binding;
+    private RegisterViewModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        NAMA = findViewById(R.id.nama);
-        USERNAME = findViewById(R.id.username);
-        NUMBER = findViewById(R.id.number);
-        PASSWORD = findViewById(R.id.password1);
-        p2 = findViewById(R.id.password2);
-        btnregist = findViewById(R.id.btnregist);
-
-        btnregist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Regist();
-                btnregist.setVisibility(View.GONE);
-
+        binding =ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        model = new ViewModelProvider(this).get(RegisterViewModel.class);
+        binding.btnregist.setOnClickListener(view -> Regist());
+        model.loading.observe(this, this::showLoading);
+        model.message.observe(this,result->{
+            showToast(result.getPesan());
+            if (result.getPesan().contains("Berhasil")){
+                finish();
             }
         });
+        model.eror.observe(this, this::showToast);
+
 
     }
 
     private void Regist() {
-        btnregist.setVisibility(View.VISIBLE);
-        final String nama = this.NAMA.getText().toString().trim();
-        final String username = this.USERNAME.getText().toString().trim();
-        final String number = this.NUMBER.getText().toString().trim();
-        final String password = this.PASSWORD.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, link_regist, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String success = jsonObject.getString("success");
+         String nama = binding.nama.getText().toString();
+         String notelp = binding.number.getText().toString().trim();
+         String alamat = binding.address.getText().toString();
+         String password = binding.password1.getText().toString();
 
-                    if(success.equals("1")){
-                        Toast.makeText(RegisterActivity.this,"Register Success",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        RegisterActivity.this.startActivity(intent);
-                    }
+         if (nama.isEmpty()){
+             binding.nama.setError("Kolom ini wajib di isi");
+         }else if (notelp.isEmpty()){
+             binding.number.setError("Kolom ini wajib di isi");
+         }else if (alamat.isEmpty()){
+             binding.address.setError("Kolom ini wajib di isi");
+         }else if (password.isEmpty()){
+             binding.password1.setError("Kolom ini wajib di isi");
+         } else {
+             model.register(nama,alamat,password,notelp);
+         }
 
+    }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(RegisterActivity.this,"Register Failed" + e,Toast.LENGTH_SHORT).show();
-                    btnregist.setVisibility(View.VISIBLE);
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-                Toast.makeText(RegisterActivity.this,"Register Failed" + error,Toast.LENGTH_SHORT).show();
-                btnregist.setVisibility(View.VISIBLE);
-
-            }
-        })
-        {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("nama",nama);
-                params.put("username",username);
-                return params;
-            }
-        };
-
-
-
+    public void showLoading(Boolean isLoad){
+        if (isLoad){
+            binding.progressBar.setVisibility(View.VISIBLE);
+        }else{
+            binding.progressBar.setVisibility(View.GONE);
+        }
+    }
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
 }
