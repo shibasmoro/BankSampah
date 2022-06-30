@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         model = new ViewModelProvider(this).get(RegisterViewModel.class);
         binding.btnregist.setOnClickListener(view -> Regist());
-        model.loading.observe(this, this::showLoading);
+        //model.loading.observe(this, this::showLoading);
         model.message.observe(this,result->{
             showToast(result.getPesan());
             if (result.getPesan().contains("Berhasil")){
@@ -31,8 +31,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         model.eror.observe(this, this::showToast);
-
-
     }
 
     private void Regist() {
@@ -56,13 +54,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void showLoading(Boolean isLoad){
-        if (isLoad){
-            binding.progressBar.setVisibility(View.VISIBLE);
-        }else{
-            binding.progressBar.setVisibility(View.GONE);
-        }
-    }
+//    public void showLoading(Boolean isLoad){
+//        if (isLoad){
+//            binding.progressBar.setVisibility(View.VISIBLE);
+//        }else{
+//            binding.progressBar.setVisibility(View.GONE);
+//        }
+//    }
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

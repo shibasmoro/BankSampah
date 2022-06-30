@@ -1,10 +1,6 @@
 package com.example.userbanksampah.activty;
 
-
-import static com.example.userbanksampah.util.PreferencesApp.preferences;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -55,9 +51,9 @@ public class HomeActivity extends AppCompatActivity {
         Binding.pengajuan.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, PengajuanActivity.class)));
 
         // medapat saldo saat ini
-      model.data.observe(this,data->{
+        model.data.observe(this,data->{
           Binding.saldo.setText(token(FormatAngka.format(data)));
-      });
+        });
 
         Binding.history.setOnClickListener(view -> startActivity(new Intent(HomeActivity.this, HistoryActivity.class)));
 
@@ -71,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         PreferencesApp.setStr(PreferencesApp.Id, "Kosong");
         PreferencesApp.setStr(PreferencesApp.Nama, "Kosong");
         PreferencesApp.setStr(PreferencesApp.Alamat, "Kosong");
-        PreferencesApp.setInt(PreferencesApp.Kode, 1);
+        PreferencesApp.setInt(PreferencesApp.Kode, 2);
         startActivity(new Intent(HomeActivity.this, LoginActivity.class)
                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();

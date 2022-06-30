@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         PreferencesApp.setStr(PreferencesApp.Nama, nasabah.getNama());
         PreferencesApp.setStr(PreferencesApp.Alamat, nasabah.getAlamat());
         PreferencesApp.setInt(PreferencesApp.Kode, 2);
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
     public void showLoading(Boolean isLoad){
