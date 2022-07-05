@@ -59,20 +59,16 @@ public class HomeActivity extends AppCompatActivity {
 
 
         model.pesanError.observe(this,data->showToast(data));
-        Binding.historyPenarikan.setOnClickListener(view -> logout());
+        Binding.historyPenarikan.setOnClickListener(view ->mutasiPenarikan() );
     }
 
 
-    public void logout() {
-        PreferencesApp.setStr(PreferencesApp.Id, "Kosong");
-        PreferencesApp.setStr(PreferencesApp.Nama, "Kosong");
-        PreferencesApp.setStr(PreferencesApp.Alamat, "Kosong");
-        PreferencesApp.setInt(PreferencesApp.Kode, 2);
-        startActivity(new Intent(HomeActivity.this, LoginActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-        finish();
-    }
 
+
+
+   public void mutasiPenarikan(){
+        startActivity(new Intent(this,MutasiPenarikan.class));
+   }
 
     public void showLoading(Boolean isLoad){
         if (isLoad){

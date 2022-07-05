@@ -65,5 +65,8 @@ Sampah tidak berguna yang anda telah kumpulkan telah berubah menjadi uang yang a
     <string name="pondok_maharta_blok_a1_no_22">Pondok Maharta Blok A1 No 22</string>
     <string name="password1">Password</string>
     <string name="_123456">123456</string>
+    <string name="tanggalPengajuan">Tanggal Pengajuan</string>
+    <string name="jumlahPenarikan">Jumlah Penarikan</string>
+    <string name="cari">Cari</string>
 
 </resources>

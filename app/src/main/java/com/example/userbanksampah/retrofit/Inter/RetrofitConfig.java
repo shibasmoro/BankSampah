@@ -4,6 +4,7 @@ import com.example.userbanksampah.model.DetilMutasi;
 import com.example.userbanksampah.model.KategoriSampah;
 import com.example.userbanksampah.model.Message;
 import com.example.userbanksampah.model.Mutasi;
+import com.example.userbanksampah.model.MutasiPenarikan;
 import com.example.userbanksampah.model.Nasabah;
 import com.example.userbanksampah.model.Pengajuan;
 import com.example.userbanksampah.model.Sampah;
@@ -19,8 +20,12 @@ import retrofit2.http.Query;
 
 public interface RetrofitConfig {
 
+
     @GET("login.php")
     Call<Nasabah> validate_login(@Query("no_telepon") String id, @Query("password") String password);
+
+    @GET("get_mutasi_penarikan.php")
+    Call<ArrayList<MutasiPenarikan>> Mutasipenarikan(@Query("tanggal_awal") String tglAwal, @Query("tanggal_akhir") String tglAkhir,@Query("id_nasabah") String idNasabah);
 
     @GET("get_saldo.php")
     Call<Integer> your_saldo(@Query("id_nasabah") String id);

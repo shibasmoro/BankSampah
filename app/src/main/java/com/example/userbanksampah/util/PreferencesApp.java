@@ -10,6 +10,7 @@ public class PreferencesApp {
         public static final String Nama = "nama";
         public static final String Alamat = "alamat";
         public static final String Kode = "kode";
+        public static final String Telepon = "telepon";
         public final static String PREFS_NAME = "Mypref";
 
     public PreferencesApp(Context context) {

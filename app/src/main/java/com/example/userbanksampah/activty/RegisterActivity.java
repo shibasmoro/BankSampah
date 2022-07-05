@@ -1,16 +1,11 @@
 package com.example.userbanksampah.activty;
 
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.userbanksampah.databinding.ActivityRegisterBinding;
 import com.example.userbanksampah.viewmodel.RegisterViewModel;
-
 
 public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
