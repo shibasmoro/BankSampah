@@ -49,11 +49,13 @@ public interface RetrofitConfig {
     Call<ArrayList<Sampah>> detailSampah(@Query("id_kategori")String id );
 
     @FormUrlEncoded
-    @POST(" insert_pengajuan_nasabah.php")
+    @POST("insert_pengajuan_nasabah.php")
     Call<String> addPengajuan(
             @Field("nasabah") String id_nasabah,
             @Field("jumlah") int jumlah,
-            @Field("tanggal_ajuan") String tanggal
+            @Field("tanggal_ajuan") String tanggal,
+            @Field("pengajuan_id") String id_pengajuan
+
     );
 
     @FormUrlEncoded

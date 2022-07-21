@@ -29,7 +29,7 @@ public class PengajuanActivity extends AppCompatActivity {
         binding = ActivityVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        PreferencesApp pref = new PreferencesApp(this);
+        //PreferencesApp pref = new PreferencesApp(this);
         id_param = PreferencesApp.getStr(PreferencesApp.Id);
 
         model = new ViewModelProvider(this).get(VerifyViewModel.class);
@@ -73,13 +73,13 @@ public class PengajuanActivity extends AppCompatActivity {
                 if (Integer.parseInt(cleanString) > this.yourSaldo){
                     showToast("Saldo Anda Tidak mencukupi");
                 }else{
-                    //showToast(cleanString);
-                    model.addPengajuan( id_param, Integer.parseInt(cleanString), Tanggal.getCurrentDate());
+                    StringBuilder data = new StringBuilder(id_param);
+                    data.append(Tanggal.getCurrentDateId());
+                    //showToast(data.toString());
+                    model.addPengajuan( id_param, Integer.parseInt(cleanString), Tanggal.getCurrentDate(),data.toString());
                 }
             }
         });
-
-
 
         model.pesan.observe(PengajuanActivity.this, data -> {
             showToast(data);

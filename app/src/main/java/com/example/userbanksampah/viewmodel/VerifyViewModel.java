@@ -21,8 +21,8 @@ public class VerifyViewModel extends ViewModel {
     public  LiveData<Integer> saldo= _saldo;
 
 
-    public void addPengajuan(String id_nasabah,int jumlah_ajuna,String tanggal_ajuan){
-        RetrofitImpl.show_saldo().addPengajuan(id_nasabah,jumlah_ajuna,tanggal_ajuan).enqueue(new Callback<String>() {
+    public void addPengajuan(String id_nasabah,int jumlah_ajuna,String tanggal_ajuan,String id_pengajuan){
+        RetrofitImpl.show_saldo().addPengajuan(id_nasabah,jumlah_ajuna,tanggal_ajuan,id_pengajuan).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful() && response.body() != null){

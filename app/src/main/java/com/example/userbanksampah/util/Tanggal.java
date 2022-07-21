@@ -8,10 +8,14 @@ public class Tanggal {
     public  static Date date = new Date();
     public static Locale local = new Locale("id","ID");
     public static SimpleDateFormat dateFormat =  new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat dateFormatId =  new SimpleDateFormat("yyyyMMdd");
     public static SimpleDateFormat dateFormatLocal =  new SimpleDateFormat("dd - MMMM - yyyy",local);
     public static SimpleDateFormat dateFormatLocal1 =  new SimpleDateFormat("MMMM-yyyy",local);
     public static String getCurrentDate(){
         return dateFormat.format(date);
+    }
+    public static String getCurrentDateId(){
+        return dateFormatId.format(date);
     }
     public static String epochTime(){
         return String.valueOf(System.currentTimeMillis());
