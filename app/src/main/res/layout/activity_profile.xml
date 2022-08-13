@@ -12,27 +12,44 @@
         android:layout_height="match_parent">
 
 
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/userProfile"
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
-            android:layout_marginTop="110dp"
-            android:src="@drawable/prof" />
-    </RelativeLayout>
+            android:layout_marginEnd="173dp"
+            android:foregroundGravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.652"
+            tools:visibility="visible" />
 
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
+            <ImageView
+                android:id="@+id/userProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="110dp"
+                android:src="@drawable/prof" />
+        </RelativeLayout>
+
+        <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +77,7 @@
         android:fontFamily="@font/poppins_light"
         android:hint="@string/phaksi_bangun_asmoro"
         android:inputType="none"
-        android:editable="false"
+
         android:paddingStart="20dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
@@ -95,8 +112,8 @@
         android:background="@drawable/rectangle2"
         android:fontFamily="@font/poppins_light"
         android:text="@string/_085770539399"
-        android:inputType="none"
-        android:editable="false"
+        android:inputType="number"
+
         android:paddingStart="20dp"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
@@ -119,30 +136,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPhone" />
 
-    <EditText
-        android:id="@+id/etAlamat"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:drawableTint="@color/Green"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:drawableStart="@drawable/ic_baseline_location_on_24"
-        android:drawablePadding="20dp"
-        android:background="@drawable/rectangle2"
-        android:fontFamily="@font/poppins_light"
-        android:text="@string/pondok_maharta_blok_a1_no_22"
-        android:inputType="none"
-        android:editable="false"
-        android:paddingStart="20dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="#d3d3d3"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlamat" />
+        <EditText
+            android:id="@+id/etAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rectangle2"
+            android:drawableStart="@drawable/ic_baseline_location_on_24"
+            android:drawablePadding="20dp"
+            android:drawableTint="@color/Green"
+            android:fontFamily="@font/poppins_light"
+            android:inputType="text|textMultiLine"
 
-    <TextView
+            android:paddingStart="20dp"
+            android:text="@string/pondok_maharta_blok_a1_no_22"
+            android:textColor="@color/black"
+            android:textColorHint="#d3d3d3"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlamat" />
+
+        <TextView
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,31 +173,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:drawableTint="@color/Green"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:drawableStart="@drawable/outline_lock_24"
-        android:drawablePadding="20dp"
-        android:background="@drawable/rectangle2"
-        android:fontFamily="@font/poppins_light"
-        android:text="@string/_123456"
-        android:inputType="none"
-        android:editable="false"
-        android:paddingStart="20dp"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="#d3d3d3"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/updateProfile"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginStart="30dp"
@@ -196,7 +192,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
 
         <TextView
             android:id="@+id/textView"
@@ -223,7 +219,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton">
+            app:layout_constraintTop_toBottomOf="@+id/updateProfile">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -250,7 +246,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </RelativeLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

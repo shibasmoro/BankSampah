@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         model = new ViewModelProvider(this).get(HomeviewModel.class);
 
         Binding.nama.setText(PreferencesApp.getStr(PreferencesApp.Nama));
+        Binding.number.setText(PreferencesApp.getStr(PreferencesApp.Telepon));
 
         model.getSaldo(PreferencesApp.getStr(PreferencesApp.Id));
         //model.validasiAjuan(PreferencesApp.getStr(PreferencesApp.Id));
