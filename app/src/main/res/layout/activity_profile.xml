@@ -160,20 +160,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAlamat" />
 
-        <TextView
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/password1"
-        android:layout_marginTop="18dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
-
-
         <Button
             android:id="@+id/updateProfile"
             android:layout_width="match_parent"
@@ -184,7 +170,7 @@
             android:alpha="1"
             android:background="@drawable/shapebutton"
             android:fontFamily="@font/poppins"
-            android:text="Update Profile"
+            android:text="Ubah Profile"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:layout_marginTop="18dp"
@@ -193,6 +179,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
+
+        <Button
+            android:id="@+id/updatePassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="30dp"
+            android:letterSpacing="0.1"
+            android:layout_marginEnd="32dp"
+            android:alpha="1"
+            android:background="@drawable/shapebutton"
+            android:fontFamily="@font/poppins"
+            android:text="Ubah Password"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="18dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateProfile" />
+
+
 
         <TextView
             android:id="@+id/textView"

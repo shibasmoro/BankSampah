@@ -69,6 +69,13 @@ public interface RetrofitConfig {
 
     );
 
+    @FormUrlEncoded
+    @POST("update_password_nasabah.php")
+    Call<String> updatePassword(
+            @Field("password") String nama,
+            @Field("id_nasabah") String telepon
+    );
+
 
     @FormUrlEncoded
     @POST("insert_nasabah.php")

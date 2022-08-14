@@ -99,9 +99,6 @@ public class MutasiPenarikan extends AppCompatActivity {
         });
         binding.cariRiwayat.setOnClickListener(view->{
             model.getMutasi(this.tanggalAwal,this.tanggalAkhir, PreferencesApp.getStr(PreferencesApp.Id));
-            showToast(PreferencesApp.getStr(PreferencesApp.Id));
-            showToast(this.tanggalAwal);
-            showToast(this.tanggalAkhir);
         });
 
     }

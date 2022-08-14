@@ -11,6 +11,7 @@ public class PreferencesApp {
         public static final String Alamat = "alamat";
         public static final String Kode = "kode";
         public static final String Telepon = "telepon";
+        public static final String Password = "password";
         public final static String PREFS_NAME = "Mypref";
 
     public PreferencesApp(Context context) {

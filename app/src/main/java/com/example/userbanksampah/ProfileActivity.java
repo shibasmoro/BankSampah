@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.userbanksampah.activty.LoginActivity;
+import com.example.userbanksampah.activty.UbahPassword;
 import com.example.userbanksampah.databinding.ActivityProfileBinding;
 import com.example.userbanksampah.util.PreferencesApp;
 import com.example.userbanksampah.viewmodel.HomeviewModel;
@@ -31,6 +32,9 @@ public class ProfileActivity extends AppCompatActivity {
         binding.etUsername.setText(PreferencesApp.getStr(PreferencesApp.Nama));
         binding.etPhone.setText(PreferencesApp.getStr(PreferencesApp.Telepon));
         model.loading.observe(this, this::showLoading);
+        binding.updatePassword.setOnClickListener(view -> {
+            startActivity(new Intent(this, UbahPassword.class));
+        });
 
         model.pesan.observe(this,data->{
             Toast.makeText(this, data, Toast.LENGTH_SHORT).show();

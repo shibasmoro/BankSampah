@@ -18,6 +18,9 @@ public class ProfileViewModel extends ViewModel {
     private final MutableLiveData<String> _pesan = new MutableLiveData<>();
     public LiveData<String> pesan = _pesan;
 
+    private final MutableLiveData<String> _pesanPassword = new MutableLiveData<>();
+    public LiveData<String> pesanPassword = _pesanPassword;
+
     public void updateData(String nama,String no_telp,String alamat,String id){
         RetrofitImpl.show_saldo().updateProfile(nama,no_telp,alamat,id).enqueue(new Callback<String>() {
             @Override
@@ -35,6 +38,28 @@ public class ProfileViewModel extends ViewModel {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 _pesan.setValue(t.getMessage());
+                _loading.setValue(false);
+            }
+        });
+    }
+
+    public void updatePassword(String password,String id_nasabah){
+        RetrofitImpl.show_saldo().updatePassword(password,id_nasabah).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                _loading.setValue(true);
+                if (response.isSuccessful() && response.body() != null){
+                    _pesanPassword.setValue(response.body());
+
+                }else{
+                    _pesanPassword.setValue("data tidak ada");
+                }
+                _loading.setValue(false);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                _pesanPassword.setValue(t.getMessage());
                 _loading.setValue(false);
             }
         });

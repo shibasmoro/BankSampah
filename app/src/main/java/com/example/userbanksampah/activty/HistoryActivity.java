@@ -86,8 +86,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
         Binding.btnCekMutasi.setOnClickListener(view -> {
-            showToast(tanggalAwal);
-            showToast(tanggalAkhir);
+
 
            if (tanggalAwalLong > tanggalAkhirLong) {
                 showToast("Masukan format tanggal yang benar");

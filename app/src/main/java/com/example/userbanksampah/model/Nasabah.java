@@ -14,6 +14,13 @@ public class Nasabah {
     @SerializedName("message")
     private String pesan ="";
 
+    @SerializedName("password")
+    private String password ="";
+
+    public String getPassword() {
+        return password;
+    }
+
     public String getPesan() {
         return pesan;
     }

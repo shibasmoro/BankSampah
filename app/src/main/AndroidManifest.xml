@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Userbanksampah">
         <activity
+            android:name=".activty.UbahPassword"
+            android:exported="false" />
+        <activity
             android:name=".activty.MutasiPenarikan"
             android:exported="false" />
         <activity
@@ -57,6 +60,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name = "keyValue"
+            android:value = "https://ublmobilekmmi.web.id/bank_sampah"/>
     </application>
 
 </manifest>

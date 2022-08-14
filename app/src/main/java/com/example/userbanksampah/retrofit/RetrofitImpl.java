@@ -1,5 +1,9 @@
 package com.example.userbanksampah.retrofit;
 
+import android.app.Application;
+import android.content.pm.ApplicationInfo;
+
+import com.example.userbanksampah.BuildConfig;
 import com.example.userbanksampah.retrofit.Inter.RetrofitConfig;
 
 import retrofit2.Retrofit;
@@ -8,7 +12,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitImpl {
     private static Retrofit retrofit;
-    private static final String Base_url = "https://ublmobilekmmi.web.id/bank_sampah/";
+    private static final String Base_url =BuildConfig.BASE_URL;
+
 
     public static RetrofitConfig loginrequest() {
         retrofit = new Retrofit.Builder()

@@ -48,6 +48,7 @@
             android:layout_height="55dp"
             android:fontFamily="@font/poppins_light"
             android:textColor="@color/Green"
+            android:inputType="number"
             tools:ignore="SpeakableTextPresentCheck">
 
         </EditText>
