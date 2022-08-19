@@ -1,7 +1,6 @@
 package com.example.userbanksampah.retrofit;
 
-import android.app.Application;
-import android.content.pm.ApplicationInfo;
+
 
 import com.example.userbanksampah.BuildConfig;
 import com.example.userbanksampah.retrofit.Inter.RetrofitConfig;

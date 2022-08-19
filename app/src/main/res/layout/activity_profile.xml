@@ -47,6 +47,15 @@
                 android:layout_centerInParent="true"
                 android:layout_marginTop="110dp"
                 android:src="@drawable/prof" />
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignRight="@+id/userProfile"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_baseline_edit_24" />
         </RelativeLayout>
 
         <TextView
@@ -77,6 +86,7 @@
         android:fontFamily="@font/poppins_light"
         android:hint="@string/phaksi_bangun_asmoro"
         android:inputType="none"
+
 
         android:paddingStart="20dp"
         android:layout_marginTop="10dp"
@@ -162,22 +172,43 @@
 
         <Button
             android:id="@+id/updateProfile"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginStart="30dp"
-            android:letterSpacing="0.1"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:alpha="1"
             android:background="@drawable/shapebutton"
             android:fontFamily="@font/poppins"
+            android:letterSpacing="0.1"
             android:text="Ubah Profile"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:layout_marginTop="18dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/cancelUpdateProfile"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
+
+        <Button
+            android:id="@+id/cancelUpdateProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:alpha="1"
+            android:background="@drawable/shapebutton"
+            android:fontFamily="@font/poppins"
+            android:letterSpacing="0.1"
+            android:text="Cancel"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/updateProfile"
+
             app:layout_constraintTop_toBottomOf="@+id/etAlamat" />
 
         <Button

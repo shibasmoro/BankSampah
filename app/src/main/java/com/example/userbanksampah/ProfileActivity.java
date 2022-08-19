@@ -19,14 +19,15 @@ import com.example.userbanksampah.viewmodel.ProfileViewModel;
 public class ProfileActivity extends AppCompatActivity {
     private ActivityProfileBinding binding;
     private ProfileViewModel model;
+    private Boolean edit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding =ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        init();
         model = new ViewModelProvider(this).get(ProfileViewModel.class);
-        PreferencesApp pref = new PreferencesApp(this);
         binding.tvgugel.setOnClickListener(view -> logout());
         binding.etAlamat.setText(PreferencesApp.getStr(PreferencesApp.Alamat));
         binding.etUsername.setText(PreferencesApp.getStr(PreferencesApp.Nama));
@@ -34,6 +35,34 @@ public class ProfileActivity extends AppCompatActivity {
         model.loading.observe(this, this::showLoading);
         binding.updatePassword.setOnClickListener(view -> {
             startActivity(new Intent(this, UbahPassword.class));
+        });
+        binding.edit.setOnClickListener(view->{
+            this.edit =!this.edit;
+
+            if (this.edit){
+                Toast.makeText(this, "Edit On", Toast.LENGTH_SHORT).show();
+                binding.etPhone.setEnabled(true);
+                binding.etUsername.setEnabled(true);
+                binding.etAlamat.setEnabled(true);
+                binding.updateProfile.setVisibility(View.VISIBLE);
+                binding.cancelUpdateProfile.setVisibility(View.VISIBLE);
+            }else{
+                Toast.makeText(this, "Edit Off", Toast.LENGTH_SHORT).show();
+                binding.etPhone.setEnabled(false);
+                binding.etUsername.setEnabled(false);
+                binding.etAlamat.setEnabled(false);
+                binding.updateProfile.setVisibility(View.GONE);
+                binding.cancelUpdateProfile.setVisibility(View.GONE);
+            }
+        });
+
+        binding.cancelUpdateProfile.setOnClickListener(view ->{
+            this.edit =false;
+            binding.etPhone.setEnabled(false);
+            binding.etUsername.setEnabled(false);
+            binding.etAlamat.setEnabled(false);
+            binding.updateProfile.setVisibility(View.GONE);
+            binding.cancelUpdateProfile.setVisibility(View.GONE);
         });
 
         model.pesan.observe(this,data->{
@@ -64,8 +93,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void update(){
-
+    private void init(){
+        binding.etPhone.setEnabled(false);
+        binding.etUsername.setEnabled(false);
+        binding.etAlamat.setEnabled(false);
+        binding.updateProfile.setVisibility(View.GONE);
+        binding.cancelUpdateProfile.setVisibility(View.GONE);
     }
 
     public void showLoading(Boolean isLoad) {
