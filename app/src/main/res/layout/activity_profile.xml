@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
@@ -71,6 +70,8 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+
 
     <EditText
         android:id="@+id/etUsername"
@@ -248,7 +249,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
+        <Button
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -256,35 +257,30 @@
             android:layout_marginEnd="30dp"
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
+            android:text="Ubah Password"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/updateProfile">
+            app:layout_constraintTop_toBottomOf="@+id/updateProfile"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/tvgugel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:letterSpacing="0.2"
-                    android:text="@string/logout1"
-                    android:textAlignment="center"
-                    android:textColor="#FF0000"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tvgugel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:letterSpacing="0.2"
+            android:text="@string/logout1"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
